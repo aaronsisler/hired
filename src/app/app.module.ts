@@ -1,3 +1,6 @@
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HomeComponent } from './core/components/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,9 +21,14 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
