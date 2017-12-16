@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PositionViewComponent } from './positionview.component';
+import { PositionViewComponent } from './position-view.component';
 
 describe('PositionViewComponent', () => {
   let component: PositionViewComponent;

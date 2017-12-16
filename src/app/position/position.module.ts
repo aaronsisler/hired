@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { PositionsComponent } from './components/positions/positions.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard.service';
-import { PositionViewComponent } from './components/positionview/positionview.component';
-import { PositionCreateComponent } from './components/positioncreate/positioncreate.component';
+import { PositionViewComponent } from './components/position-view/position-view.component';
+import { PositionCreateComponent } from './components/position-create/position-create.component';
 
 @NgModule({
   imports: [

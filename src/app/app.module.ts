@@ -14,11 +14,13 @@ import { environment } from './../environments/environment';
 
 
 import { AppComponent } from './app.component';
+import { UserUpdateComponent } from './user/components/user-update/user-update.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

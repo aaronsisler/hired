@@ -1,3 +1,4 @@
+
 <div *ngIf="position.title" class="card">
 <div class="card-header text-muted">Position Id: {{ position.id }}</div>
     <div class="card-body">
@@ -7,5 +8,6 @@
     </div>
     <div class="card-footer text-muted">
       <button (click)="applyToPosition()" class="btn btn-primary">Apply for Position</button>
+      <button routerLink = "/" class="btn btn-secondary">Back</button>
     </div>
   </div>

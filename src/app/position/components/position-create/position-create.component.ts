@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-positioncreate',
-  templateUrl: './positioncreate.component.html',
-  styleUrls: ['./positioncreate.component.css']
+  templateUrl: './position-create.component.html',
+  styleUrls: ['./position-create.component.css']
 })
 export class PositionCreateComponent implements OnInit {
 

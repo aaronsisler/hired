@@ -6,8 +6,8 @@ import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-positionview',
-  templateUrl: './positionview.component.html',
-  styleUrls: ['./positionview.component.css']
+  templateUrl: './position-view.component.html',
+  styleUrls: ['./position-view.component.css']
 })
 export class PositionViewComponent {
 
