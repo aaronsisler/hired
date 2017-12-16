@@ -1,3 +1,4 @@
+import { PositionModule } from './position/position.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './core/components/home/home.component';
@@ -23,6 +24,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CoreModule,
     SharedModule,
+    PositionModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

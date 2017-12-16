@@ -1,0 +1,24 @@
+<h3>Open Positions</h3>
+
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Position Id</th>
+      <th>Position Title</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let position of filteredPositions">
+      <td>
+        <a [routerLink]="['/positions/', position.$key]">{{ position.id }}</a>
+      </td>
+      <td>{{ position.title }}</td>
+      <td>{{ position.location }}</td>
+    </tr>
+  </tbody>
+</table>
