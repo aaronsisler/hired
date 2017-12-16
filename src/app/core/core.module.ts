@@ -8,10 +8,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 import { LogoutComponent } from './components/logout/logout.component';
+import { PositionModule } from 'position/position.module';
 
 @NgModule({
   imports: [
     SharedModule,
+    PositionModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },

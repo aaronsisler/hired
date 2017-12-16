@@ -1,3 +1,4 @@
+import { PositionModule } from './position/position.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './core/components/home/home.component';
@@ -13,16 +14,19 @@ import { environment } from './../environments/environment';
 
 
 import { AppComponent } from './app.component';
+import { UserUpdateComponent } from './user/components/user-update/user-update.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
     SharedModule,
+    PositionModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
