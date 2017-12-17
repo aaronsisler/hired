@@ -10,7 +10,7 @@ import { PositionCreateComponent } from './components/position-create/position-c
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forRoot([
+    RouterModule.forChild([
       { path: 'positions/:id', component: PositionViewComponent }
     ])
   ],
