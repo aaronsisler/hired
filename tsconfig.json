@@ -17,17 +17,20 @@
     ],
     "baseUrl": "./src",
     "paths": {
-      "shared/*": [
-        "app/shared/*"
-      ],
-      "admin/*": [
-        "app/admin/*"
+      "applicant/*": [
+        "app/applicant/*"
       ],
       "core/*": [
         "app/core/*"
       ],
-      "shopping/*": [
-        "app/shopping/*"
+      "position/*": [
+        "app/position/*"
+      ],
+      "shared/*": [
+        "app/shared/*"
+      ],
+      "user/*": [
+        "app/user/*"
       ]
     }
   }

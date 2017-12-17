@@ -11,11 +11,7 @@ import { PositionCreateComponent } from './components/position-create/position-c
   imports: [
     SharedModule,
     RouterModule.forRoot([
-      {
-        path: 'positions/:id',
-        component: PositionViewComponent,
-        canActivate: [AuthGuard]
-      }
+      { path: 'positions/:id', component: PositionViewComponent }
     ])
   ],
   exports: [
