@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-update.component.css']
 })
 export class UserUpdateComponent {
-  userContactInfo = {};
+  user = {};
   id;
 
   constructor(
@@ -17,19 +17,11 @@ export class UserUpdateComponent {
     private route: ActivatedRoute) {
 
     this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.userService.getContactInfo(this.id)
-        .take(1).subscribe(userContactInfo => this.userContactInfo = userContactInfo);
-    }
+    this.userService.get(this.id).take(1).subscribe(user => this.user = user);
   }
 
-  save(userContactInfo) {
-    if (this.id) {
-      this.userService.updateContactInfo(this.id, userContactInfo);
-    }
-    else {
-      this.userService.createContactInfo(userContactInfo);
-    }
+  update(user) {
+    this.userService.update(this.id, user);
     this.router.navigate(['/dashboard']);
   }
 }
