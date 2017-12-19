@@ -1,6 +1,6 @@
 import { UserService } from 'shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'user-update',
@@ -12,6 +12,7 @@ export class UserUpdateComponent {
   id;
 
   constructor(
+    private router: Router,
     private userService: UserService,
     private route: ActivatedRoute) {
 
@@ -20,5 +21,15 @@ export class UserUpdateComponent {
       this.userService.getContactInfo(this.id)
         .take(1).subscribe(userContactInfo => this.userContactInfo = userContactInfo);
     }
+  }
+
+  save(userContactInfo) {
+    if (this.id) {
+      this.userService.updateContactInfo(this.id, userContactInfo);
+    }
+    else {
+      this.userService.createContactInfo(userContactInfo);
+    }
+    this.router.navigate(['/dashboard']);
   }
 }
