@@ -38,4 +38,10 @@ export class AuthService {
       return Observable.of(null);
     })
   }
+
+  get userId(): string {
+    let userId = ""
+    this.user$.subscribe(user => userId = user.uid).unsubscribe();
+    return userId;
+  }
 }

@@ -17,13 +17,13 @@ export class PositionViewComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private positionService: PositionService) {
-
+    private positionService: PositionService
+  ) {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.positionService.get(this.id).take(1).subscribe(position => this.position = position);
   }
 
-  applyToPosition(){
-    
+  applyToPosition() {
+
   }
 }
