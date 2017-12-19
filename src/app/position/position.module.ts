@@ -10,12 +10,8 @@ import { PositionCreateComponent } from './components/position-create/position-c
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forRoot([
-      {
-        path: 'positions/:id',
-        component: PositionViewComponent,
-        canActivate: [AuthGuard]
-      }
+    RouterModule.forChild([
+      { path: 'positions/:id', component: PositionViewComponent }
     ])
   ],
   exports: [
