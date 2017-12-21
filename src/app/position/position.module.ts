@@ -1,3 +1,4 @@
+import { PositionWatcherService } from './services/position-watcher.service';
 import { PositionService } from 'shared/services/position.service';
 import { SharedModule } from 'shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { PositionCreateComponent } from './components/position-create/position-c
     PositionsComponent
   ],
   providers: [
-    PositionService
+    PositionService,
+    PositionWatcherService
   ],
   declarations: [
     PositionsComponent,

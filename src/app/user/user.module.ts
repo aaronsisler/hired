@@ -1,4 +1,4 @@
-import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserService } from 'shared/services/user.service';
 import { SharedModule } from 'shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'userupdate/:id', component: UserUpdateComponent }
+      { path: 'user-profile/:id', component: UserProfileComponent }
     ])
   ],
-  declarations: [ UserUpdateComponent ],
+  declarations: [ UserProfileComponent ],
   providers: [
     UserService
   ]
