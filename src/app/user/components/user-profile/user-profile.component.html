@@ -1,0 +1,58 @@
+<div class="col-md-6">
+  <h4>User Profile</h4>
+  <div class="card">
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="update(f.value)">
+        <div class="form-group">
+          <label for="inputFullName">Full Name</label>
+          <div class="form-row">
+            <div class="col-2">
+              <input #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="First Name"
+                id="inputFirstName">
+            </div>
+            <div class="col-2">
+              <input #middleName="ngModel" [(ngModel)]="user.middleName" name="middleName" type="text" class="form-control" placeholder="Middle Name"
+                id="inputMiddleName">
+            </div>
+            <div class="col-2">
+              <input #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Last Name"
+                id="inputLastName">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDisplayName">Display Name</label>
+          <input #displayName="ngModel" [(ngModel)]="user.displayName" name="displayName" type="text" class="form-control col-3" id="inputDisplayName">
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email address</label>
+          <input #email="ngModel" [(ngModel)]="user.email" name="email" type="email" class="form-control col-4" id="inputEmail" aria-describedby="emailHelp"
+            placeholder="name@company.com">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <label for="inputAreaCode">Phone Number</label>
+        <div class="form-row">
+          <div class="col-1">
+            <input #phoneAreaCode="ngModel" [(ngModel)]="user.phoneAreaCode" name="phoneAreaCode" type="text" class="form-control" placeholder="919"
+              id="inputAreaCode">
+          </div>
+          <div class="col-1">
+            <input #phonePrefix="ngModel" [(ngModel)]="user.phonePrefix" name="phonePrefix" type="text" class="form-control" placeholder="634"
+              id="inputPhonePrefix">
+          </div>
+          <div class="col-1">
+            <input #phoneLineNumber="ngModel" [(ngModel)]="user.phoneLineNumber" name="phoneLineNumber" type="text" class="form-control"
+              placeholder="5789" id="inputPhoneLineNumber">
+          </div>
+          <div class="col-1">
+            <input #phoneExt="ngModel" [(ngModel)]="user.phoneExt" name="phoneExt" type="text" class="form-control" placeholder="Phone Ext."
+              id="inputPhoneExt">
+          </div>
+        </div>
+        <br />
+        <button class="btn btn-primary">Update Info</button>
+      </form>
+    </div>
+  </div>
+</div>
