@@ -1,0 +1,14 @@
+<div *ngIf="position" class="card">
+    <div class="card-header text-muted">
+      Position Id: {{ position.id }}
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{ position.title }}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">{{ position.location }}</h6>
+      <p class="card-text">{{ position.description }}</p>
+    </div>
+    <div class="card-footer text-muted">
+      <button (click)="subscribeToPosition()" class="btn btn-primary">Subscribe to Position</button>
+      <button routerLink="/dashboard" class="btn btn-secondary">Back</button>
+    </div>
+  </div>
