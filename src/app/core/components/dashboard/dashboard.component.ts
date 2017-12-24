@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { PositionWatcherService } from 'position/services/position-watcher.service';
 import { AuthService } from 'shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   subscriptionLevels: any[] = ["ALL", "SOME", "REQUIRED"];
 
   constructor(
-    private positionWatcherService: PositionWatcherService, private authService: AuthService) { }
+    private positionWatcherService: PositionWatcherService, private authService: AuthService, private router: Router) { }
 
   async ngOnInit() {
     this.userSubscription = await this.authService.user$.subscribe(user => this.userId = user.uid);
@@ -36,7 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  navigateToPositionsNotWatched(){
-    
+  navigateToSubscribablePositions(){
+    this.router.navigateByUrl('/positions-subscribable/' + this.userId);
   }
 }

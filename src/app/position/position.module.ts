@@ -8,13 +8,16 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
 import { PositionCreateComponent } from './components/position-create/position-create.component';
 import { PositionExternalViewComponent } from './components/position-external-view/position-external-view.component';
 import { PositionInternalViewComponent } from './components/position-internal-view/position-internal-view.component';
+import { PositionsSubscribableComponent } from './components/positions-subscribable/positions-subscribable.component';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
+      { path: 'position-create', component: PositionCreateComponent },
       { path: 'position/:id', component: PositionExternalViewComponent },
-      { path: 'position-data/:id', component: PositionInternalViewComponent }
+      { path: 'position-data/:id', component: PositionInternalViewComponent },
+      { path: 'positions-subscribable/:id', component: PositionsSubscribableComponent }
     ])
   ],
   exports: [
@@ -28,7 +31,8 @@ import { PositionInternalViewComponent } from './components/position-internal-vi
     PositionsComponent,
     PositionCreateComponent,
     PositionExternalViewComponent,
-    PositionInternalViewComponent
+    PositionInternalViewComponent,
+    PositionsSubscribableComponent
   ]
 })
 export class PositionModule { }
