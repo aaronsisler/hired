@@ -1,12 +1,12 @@
-import { PositionWatcher } from './../../../shared/models/position-watcher';
-import { PositionWatcherService } from './../../services/position-watcher.service';
+import { PositionWatcher } from 'shared/models/position-watcher';
+import { PositionWatcherService } from 'position/services/position-watcher.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 import { Position } from 'shared/models/position';
 import { PositionService } from 'shared/services/position.service';
 import { AuthService } from 'shared/services/auth.service';
 import { PositionWatched } from 'shared/models/position-watched';
 import 'rxjs/add/operator/filter';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'positions-subscribable',
