@@ -8,7 +8,13 @@
     <p class="card-text">{{ position.description }}</p>
   </div>
   <div class="card-footer text-muted">
-    <button (click)="subscribeToPosition()" class="btn btn-primary">Change Subscription</button>
+    <button (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Change Subscription</button>
+    <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
+      class="form-control" required>
+      <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
+        {{ subLevel }}
+      </option>
+    </select>
     <button routerLink="/dashboard" class="btn btn-secondary">Back</button>
   </div>
 </div>
