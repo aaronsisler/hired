@@ -38,6 +38,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   navigateToSubscribablePositions(){
-    this.router.navigateByUrl('/positions-subscribable/' + this.userId);
+    this.router.navigateByUrl('/positions-subscribable');
   }
 }

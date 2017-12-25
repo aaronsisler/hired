@@ -1,7 +1,6 @@
 <div>
   <h4>Subscribable Positions</h4>
   <button routerLink="/dashboard" class="btn btn-secondary">Back to Dashboard</button>
-  <button (click)="filterWatchedPositionsFromAllPositions()" class="btn btn-secondary">Do magic</button>
 </div>
 <br />
 <p>
@@ -16,7 +15,7 @@
       <th>Location</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="positionsWatched">
     <tr *ngFor="let position of filteredPositions">
       <td>
         <a [routerLink]="['/position-data/', position.$key]">{{ position.id }}</a>

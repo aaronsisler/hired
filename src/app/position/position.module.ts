@@ -17,7 +17,7 @@ import { PositionsSubscribableComponent } from './components/positions-subscriba
       { path: 'position-create', component: PositionCreateComponent },
       { path: 'position/:id', component: PositionExternalViewComponent },
       { path: 'position-data/:id', component: PositionInternalViewComponent },
-      { path: 'positions-subscribable/:id', component: PositionsSubscribableComponent }
+      { path: 'positions-subscribable', component: PositionsSubscribableComponent }
     ])
   ],
   exports: [
