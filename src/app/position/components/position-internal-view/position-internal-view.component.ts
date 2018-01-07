@@ -6,7 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PositionService } from 'shared/services/position.service';
 import 'rxjs/add/operator/take';
 import { Subscription } from 'rxjs/Subscription';
-import { Promise } from 'firebase';
 
 
 @Component({
@@ -42,6 +41,7 @@ export class PositionInternalViewComponent implements OnInit {
   }
 
   async subscribeToPosition(selectedSubscriptionLevel: string) {
-    this.positionWatcherService.updateSubscriptionLevel(this.userId, this.positionId, selectedSubscriptionLevel);
+    this.positionWatcherService.updateSubscriptionLevel(this.userId, this.positionId, selectedSubscriptionLevel)
+      .then(() => this.router.navigateByUrl('/dashboard'));
   }
 }

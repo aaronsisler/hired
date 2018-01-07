@@ -8,13 +8,23 @@
     <p class="card-text">{{ position.description }}</p>
   </div>
   <div class="card-footer text-muted">
-    <button (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Change Subscription</button>
-    <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
-      class="form-control" required>
-      <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
-        {{ subLevel }}
-      </option>
-    </select>
-    <button routerLink="/dashboard" class="btn btn-secondary">Back</button>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button [disabled]="subscriptionLevel.invalid" (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Add Subscription</button>
+          </div>
+          <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
+            class="form-control" required>
+            <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
+              {{ subLevel }}
+            </option>
+          </select>
+        </div>
+        <div class="alert alert-danger" *ngIf="subscriptionLevel.touched && subscriptionLevel.invalid">Subscription level is required</div>
+        <br />
+        <button routerLink="/positions-subscribable" class="btn btn-secondary">Back</button>
+      </div>
+    </div>
   </div>
 </div>
