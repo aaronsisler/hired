@@ -1,5 +1,8 @@
-<h3>Open Positions</h3>
-
+<div>
+  <h4>Subscribable Positions</h4>
+  <button routerLink="/dashboard" class="btn btn-secondary">Back to Dashboard</button>
+</div>
+<br />
 <p>
   <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
 </p>
@@ -12,10 +15,10 @@
       <th>Location</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="positionsWatched">
     <tr *ngFor="let position of filteredPositions">
       <td>
-        <a [routerLink]="['/position/', position.$key]">{{ position.id }}</a>
+        <a [routerLink]="['/position-data/', position.$key]">{{ position.id }}</a>
       </td>
       <td>{{ position.title }}</td>
       <td>{{ position.location }}</td>

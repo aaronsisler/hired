@@ -1,0 +1,30 @@
+<div *ngIf="position" class="card">
+  <div class="card-header text-muted">
+    Position Id: {{ position.id }}
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{ position.title }}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{ position.location }}</h6>
+    <p class="card-text">{{ position.description }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button [disabled]="subscriptionLevel.invalid" (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Add Subscription</button>
+          </div>
+          <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
+            class="form-control" required>
+            <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
+              {{ subLevel }}
+            </option>
+          </select>
+        </div>
+        <div class="alert alert-danger" *ngIf="subscriptionLevel.touched && subscriptionLevel.invalid">Subscription level is required</div>
+        <br />
+        <button routerLink="/positions-subscribable" class="btn btn-secondary">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
