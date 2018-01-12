@@ -17,8 +17,9 @@ export class PositionInternalViewComponent implements OnInit {
   position: Position;
   positionId: string;
   userId: string;
-  subscriptionLevels: string[] = ["ALL", "SOME", "REQUIRED"];
+  subscriptionLevels: string[] = ["ALL", "SOME", "REQUIRED", "NONE"];
   selectedSubscriptionLevel: string;
+  isAddSub: any;
 
   constructor(
     private router: Router,
@@ -28,6 +29,7 @@ export class PositionInternalViewComponent implements OnInit {
     private authService: AuthService
   ) {
     this.positionId = this.route.snapshot.paramMap.get('id');
+    this.isAddSub = this.route.snapshot.paramMap.get('isAddSub');
     if (this.positionId) {
       this.positionService.get(this.positionId).take(1).subscribe(position => this.position = position);
     }
@@ -36,7 +38,7 @@ export class PositionInternalViewComponent implements OnInit {
     await this.authService.user$.take(1).toPromise().then(user => this.userId = user.uid);
     this.positionWatcherService.getPosition(this.userId, this.positionId)
       .subscribe(positionWatcher => {
-        this.selectedSubscriptionLevel = positionWatcher.subscriptionLevel;
+        this.selectedSubscriptionLevel = positionWatcher.subscriptionLevel ? positionWatcher.subscriptionLevel : 'NONE';
       });
   }
 

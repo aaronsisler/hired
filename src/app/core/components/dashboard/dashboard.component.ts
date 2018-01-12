@@ -1,3 +1,5 @@
+import { PositionWatcher } from 'shared/models/position-watcher';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { PositionWatcherService } from 'position/services/position-watcher.service';
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  positionsWatcher$;
+  positionsWatcher$: Observable<PositionWatcher>;
   userSubscription: Subscription;
   userId: string;
   subscriptionLevels: any[] = ["ALL", "SOME", "REQUIRED"];
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string) {
+    //TODO Need to filter a live Observable
     // this.filteredPositions = (query) ?
     //   this.positions.filter(position => position.title.toLowerCase().includes(query.toLowerCase())) :
     //   this.positions;
