@@ -12,7 +12,7 @@
       <div class="col-md-6">
         <div class="input-group">
           <div class="input-group-btn">
-            <button [disabled]="subscriptionLevel.invalid" (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Add Subscription</button>
+            <button (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Update Subscription</button>
           </div>
           <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
             class="form-control" required>
@@ -21,9 +21,11 @@
             </option>
           </select>
         </div>
-        <div class="alert alert-danger" *ngIf="subscriptionLevel.touched && subscriptionLevel.invalid">Subscription level is required</div>
         <br />
-        <button routerLink="/positions-subscribable" class="btn btn-secondary">Back</button>
+        <button *ngIf="!isAddSub; else addSub" routerLink="/dashboard" class="btn btn-secondary">Back</button>
+        <ng-template #addSub>
+          <button routerLink="/positions-subscribable" class="btn btn-secondary">Back</button>
+        </ng-template>
       </div>
     </div>
   </div>
