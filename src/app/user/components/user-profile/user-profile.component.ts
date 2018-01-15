@@ -1,6 +1,7 @@
 import { UserService } from 'shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppUser } from 'shared/models/app-user';
 
 @Component({
   selector: 'user-profile',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  user = {};
+  user: AppUser;
   id;
 
   constructor(
@@ -21,7 +22,7 @@ export class UserProfileComponent {
   }
 
   update(user) {
-    this.userService.update(this.id, user);
-    this.router.navigate(['/dashboard']);
+    this.userService.update(this.id, user)
+      .then(() => this.router.navigate(['/dashboard']));
   }
 }
