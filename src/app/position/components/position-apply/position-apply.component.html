@@ -1,0 +1,30 @@
+<h4>Apply for Position</h4>
+<div *ngIf="isUserInfo && user" class="row">
+  <div class="col-md-6">
+    <app-user-name [user]="user"></app-user-name>
+    <br />
+    <app-user-address [user]="user"></app-user-address>
+    <br />
+    <button (click)="updateView('DOCUMENTS')" class="btn btn-primary">Save and Continue</button>
+    <button type="button" [routerLink]="['/position/', positionId]" class="btn btn-secondary">Back to Position</button>
+  </div>
+  <div class="col-md-6">
+    <app-user-contact [user]="user"></app-user-contact>
+  </div>
+</div>
+<div *ngIf="isDocumentUpload" class="row">
+  <div class="col-md-6">
+    Document Upload works
+    <br />
+    <button (click)="updateView('FINAL_REVIEW')" class="btn btn-primary">Save and Continue</button>
+    <button (click)="updateView('USER_INFO')" class="btn btn-secondary">Back to User Info</button>
+  </div>
+</div>
+<div *ngIf="isFinalReview" class="row">
+  <div class="col-md-6">
+    Final Review works
+    <br />
+    <button [routerLink]="['/position/', positionId]" class="btn btn-primary">Save and Continue</button>
+    <button (click)="updateView('DOCUMENTS')" class="btn btn-secondary">Back to Documents</button>
+  </div>
+</div>

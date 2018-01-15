@@ -23,8 +23,4 @@ export class PositionExternalViewComponent {
     if (this.positionId) this.positionService.get(this.positionId).take(1).subscribe(position => this.position = position);
 
   }
-
-  applyToPosition() {
-
-  }
 }

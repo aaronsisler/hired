@@ -7,11 +7,13 @@ import { UserContactComponent } from './components/user-contact/user-contact.com
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { UserNameComponent } from './components/user-name/user-name.component';
+import { AuthGuard } from 'shared/services/auth-guard.service';
+
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'user-profile/:id', component: UserProfileComponent }
+      { path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
     ])
   ],
   declarations: [
@@ -20,6 +22,11 @@ import { UserNameComponent } from './components/user-name/user-name.component';
     UserAvatarComponent,
     UserAddressComponent,
     UserNameComponent
+  ],
+  exports: [
+    UserNameComponent,
+    UserContactComponent,
+    UserAddressComponent
   ],
   providers: [
     UserService

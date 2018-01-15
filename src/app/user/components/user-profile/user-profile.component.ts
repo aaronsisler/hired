@@ -10,19 +10,19 @@ import { AppUser } from 'shared/models/app-user';
 })
 export class UserProfileComponent {
   user: AppUser;
-  id;
+  userId: string;
 
   constructor(
     private router: Router,
     private userService: UserService,
     private route: ActivatedRoute) {
 
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.userService.get(this.id).take(1).subscribe(user => this.user = user);
+    this.userId = this.route.snapshot.paramMap.get('id');
+    this.userService.get(this.userId).take(1).subscribe(user => this.user = user);
   }
 
   update(user) {
-    this.userService.update(this.id, user)
+    this.userService.update(this.userId, user)
       .then(() => this.router.navigate(['/dashboard']));
   }
 }
