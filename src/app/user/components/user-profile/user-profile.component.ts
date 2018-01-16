@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from 'shared/models/app-user';
 
 @Component({
-  selector: 'user-profile',
+  selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
