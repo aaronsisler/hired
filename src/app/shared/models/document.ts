@@ -1,4 +1,5 @@
 export interface Document{
-  name: string;
+  fileName: string;
+  downloadURL: string;
   dateUploaded: string;
 }

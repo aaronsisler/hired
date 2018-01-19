@@ -10,7 +10,7 @@
       <tbody>
         <tr *ngFor="let document of documents">
           <td>
-            <a>{{document.name}}</a>
+            <a href="{{document.downloadURL}}">{{document.fileName}}</a>
           </td>
           <td>
             {{document.dateUploaded}}

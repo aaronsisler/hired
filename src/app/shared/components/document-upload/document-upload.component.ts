@@ -1,22 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { DocumentService } from 'shared/services/document.service';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
 
 @Component({
   selector: 'app-document-upload',
   templateUrl: './document-upload.component.html',
   styleUrls: ['./document-upload.component.css']
 })
-export class DocumentUploadComponent implements OnInit {
+export class DocumentUploadComponent {
   @Input('userId') userId: string;
-  documentName: string;
+  @ViewChild('fileName') fileNameVariable: any;
+  file: File;
 
   constructor(private documentService: DocumentService) { }
 
-  ngOnInit() {
+  fileChange(event){
+    this.file = event.target.files[0];
   }
 
-  uploadDocument(documentName: string) {
-    this.documentService.uploadDocument(this.userId, this.documentName).then(() => this.documentName = "");
+  async uploadDocument() {
+    var storageRef = firebase.storage().ref(this.userId + "/" + this.file.name);
+    await storageRef.put(this.file);
+    let downloadURL: string;
+    await storageRef.getDownloadURL().then(url=> downloadURL = url);
+    this.documentService.uploadDocument(this.userId, this.file.name, downloadURL);
+    this.fileNameVariable.nativeElement.value = "";
   }
 
 }

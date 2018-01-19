@@ -11,11 +11,12 @@ export class DocumentService {
     return this.db.list('/documents/' + userId);
   }
 
-  uploadDocument(userId: string, documentName: string) {
+  uploadDocument(userId: string, documentName: string, downloadURL: string) {
     return this.db.list('/documents/' + userId)
       .push(
       {
-        name: documentName,
+        fileName: documentName,
+        downloadURL: downloadURL,
         dateUploaded: new Date().toLocaleString()
       });
   }

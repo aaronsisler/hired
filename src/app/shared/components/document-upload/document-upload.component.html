@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-body">
     <div class="form-group">
-      <h6>Document Name</h6>
-      <input name="documentName" [(ngModel)]="documentName" type="text" class="form-control" placeholder="Document Name">
+      <h6>File Upload</h6>
+      <input #fileName name="fileName" (change)="fileChange($event)" type="file" class="form-control" placeholder="Upload file" accept=".pdf,.doc,.docx">
     </div>
     <div>
-      <button class="btn btn-primary" (click)="uploadDocument(documentName)">Upload Document</button>
+      <button class="btn btn-primary" (click)="uploadDocument()">Upload Document</button>
     </div>
   </div>
 </div>
