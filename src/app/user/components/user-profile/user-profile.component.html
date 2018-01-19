@@ -1,16 +1,19 @@
-<h4>Profile</h4>
-<div *ngIf="user" class="row">
-  <div class="col-md-6">
-    <app-user-name [user]="user"></app-user-name>
-    <br />
-    <app-user-address [user]="user"></app-user-address>
-    <br />
-    <button (click)="update(user)" class="btn btn-primary">Update Info</button>
-    <button type="button" routerLink="/dashboard" class="btn btn-secondary">Back</button>
-  </div>
-  <div class="col-md-6">
-    <app-user-avatar [user]="user"></app-user-avatar>
-    <br />
-    <app-user-contact [user]="user"></app-user-contact>
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="user" class="row">
+      <div class="col-md-6">
+        <app-user-name [user]="user"></app-user-name>
+        <br />
+        <app-user-address [user]="user"></app-user-address>
+        <br />
+        <button (click)="update(user)" class="btn btn-primary">Update Info</button>
+        <button type="button" routerLink="/dashboard" class="btn btn-secondary">Back</button>
+      </div>
+      <div class="col-md-6">
+        <app-user-avatar [user]="user"></app-user-avatar>
+        <br />
+        <app-user-contact [user]="user"></app-user-contact>
+      </div>
+    </div>
   </div>
 </div>

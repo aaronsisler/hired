@@ -1,0 +1,15 @@
+<div *ngIf="userId">
+  <ngb-tabset>
+    <ngb-tab title="User Profile">
+      <ng-template ngbTabContent>
+        <app-user-profile [userId]="userId"></app-user-profile>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Document Management">
+      <ng-template ngbTabContent>
+        <app-document-upload [userId]="userId"></app-document-upload>
+        <app-documents [userId]="userId"></app-documents>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

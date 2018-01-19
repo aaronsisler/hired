@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <div class="form-group">
+      <h6>File Upload</h6>
+      <input #fileName name="fileName" (change)="fileChange($event)" type="file" class="form-control" placeholder="Upload file">
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="uploadDocument()">Upload Document</button>
+    </div>
+  </div>
+</div>

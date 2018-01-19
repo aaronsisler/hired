@@ -6,6 +6,8 @@ import { UserService } from 'shared/services/user.service';
 import { AuthGuard } from 'shared/services/auth-guard.service';
 import { AuthService } from 'shared/services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   exports:[
     CommonModule,
     FormsModule,
+    DocumentsComponent,
+    DocumentUploadComponent,
     NgbModule.forRoot().ngModule
   ],
   providers: [
@@ -24,6 +28,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthGuard,
     UserService
   ],
-  declarations: []
+  declarations: [DocumentsComponent, DocumentUploadComponent]
 })
 export class SharedModule { }

@@ -7,11 +7,13 @@ import { UserContactComponent } from './components/user-contact/user-contact.com
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { UserNameComponent } from './components/user-name/user-name.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+import { DocumentService } from 'shared/services/document.service';
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'user-profile/:id', component: UserProfileComponent }
+      { path: 'user-account/:id', component: UserAccountComponent }
     ])
   ],
   declarations: [
@@ -19,10 +21,12 @@ import { UserNameComponent } from './components/user-name/user-name.component';
     UserContactComponent,
     UserAvatarComponent,
     UserAddressComponent,
-    UserNameComponent
+    UserNameComponent,
+    UserAccountComponent
   ],
   providers: [
-    UserService
+    UserService,
+    DocumentService
   ]
 })
 export class UserModule { }
