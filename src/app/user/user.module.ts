@@ -8,12 +8,13 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { UserNameComponent } from './components/user-name/user-name.component';
 import { AuthGuard } from 'shared/services/auth-guard.service';
-
+import { UserAccountComponent } from './components/user-account/user-account.component';
+import { DocumentService } from 'shared/services/document.service';
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'user-profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] }
+      { path: 'user-account/:id', component: UserAccountComponent }
     ])
   ],
   declarations: [
@@ -21,7 +22,8 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
     UserContactComponent,
     UserAvatarComponent,
     UserAddressComponent,
-    UserNameComponent
+    UserNameComponent,
+    UserAccountComponent
   ],
   exports: [
     UserNameComponent,
@@ -29,7 +31,8 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
     UserAddressComponent
   ],
   providers: [
-    UserService
+    UserService,
+    DocumentService
   ]
 })
 export class UserModule { }
