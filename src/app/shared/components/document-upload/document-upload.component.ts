@@ -20,9 +20,9 @@ export class DocumentUploadComponent {
   }
 
   async uploadDocument() {
-    var storageRef = firebase.storage().ref(this.userId + "/" + this.file.name);
-    await storageRef.put(this.file);
     let downloadURL: string;
+    let storageRef = firebase.storage().ref(this.userId + "/" + this.file.name);
+    await storageRef.put(this.file);
     await storageRef.getDownloadURL().then(url=> downloadURL = url);
     this.documentService.uploadDocument(this.userId, this.file.name, downloadURL);
     this.fileNameVariable.nativeElement.value = "";
