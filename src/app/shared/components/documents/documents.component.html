@@ -3,12 +3,16 @@
     <table class="table" *ngIf="documents$ | async as documents">
       <thead>
         <tr>
-          <th>Document</th>
+          <th *ngIf="isPositionApply" class="text-center">Submit Document</th>
+          <th>Document Name</th>
           <th>Date Uploaded</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let document of documents">
+          <td *ngIf="isPositionApply" class="text-center">
+            <input type="checkbox" (change)="onChange(document)">
+          </td>
           <td>
             <a href="{{document.downloadURL}}">{{document.fileName}}</a>
           </td>
