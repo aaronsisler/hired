@@ -29,12 +29,7 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   }
 
   documentSelectorTriggered(event) {
-    if (this.documentsSelected.find(document => (document.$key === event.$key))) {
-      this.documentsSelected = this.documentsSelected.filter(document => document.$key !== event.$key)
-    }
-    else {
-      this.documentsSelected.push(event);
-    }
+    this.documentsSelected = event;
   }
 
   async ngOnInit() {
@@ -45,9 +40,9 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
 
   updateView(viewToBeShown: string) {
     this.clearAllViewBooleans();
-    if (viewToBeShown == 'USER_INFO') this.isUserInfo = true;
-    if (viewToBeShown == 'DOCUMENTS') this.isDocumentUpload = true;
-    if (viewToBeShown == 'FINAL_REVIEW') this.isFinalReview = true;
+    if (viewToBeShown == 'USER_INFO') { this.isUserInfo = true; return; }
+    if (viewToBeShown == 'DOCUMENTS') { this.isDocumentUpload = true; return; }
+    if (viewToBeShown == 'FINAL_REVIEW') { this.isFinalReview = true; return; }
   }
 
   clearAllViewBooleans() {
