@@ -1,0 +1,10 @@
+<div *ngIf="user" class="row">
+  <div class="col-md-6">
+    <app-user-name [user]="user" [readonly]="readonly"></app-user-name>
+    <br />
+    <app-user-address [user]="user" [readonly]="readonly"></app-user-address>
+  </div>
+  <div class="col-md-6">
+    <app-user-contact [user]="user" [readonly]="readonly"></app-user-contact>
+  </div>
+</div>

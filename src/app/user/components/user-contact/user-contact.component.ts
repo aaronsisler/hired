@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class UserContactComponent {
   @Input('user') user: AppUser;
+  @Input('readonly') readonly: boolean;
 
   constructor() { }
 }

@@ -2,23 +2,25 @@
   <div class="card-body">
     <div class="form-group">
       <h6>Address Line 1</h6>
-      <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="user.addressLine1" type="text" class="form-control" placeholder="Line 1">
+      <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="user.addressLine1" type="text" class="form-control" placeholder="Line 1"
+        [readonly]="readonly">
     </div>
     <div class="form-group">
       <h6>Address Line 2</h6>
-      <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="user.addressLine2" type="text" class="form-control" placeholder="Line 2">
+      <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="user.addressLine2" type="text" class="form-control" placeholder="Line 2"
+        [readonly]="readonly">
     </div>
     <div class="form-group">
       <h6>City</h6>
-      <input #city="ngModel" name="city" [(ngModel)]="user.city" type="text" class="form-control">
+      <input #city="ngModel" name="city" [(ngModel)]="user.city" type="text" class="form-control" [readonly]="readonly">
     </div>
     <div class="form-group">
       <h6>State</h6>
-      <input #state="ngModel" name="state" [(ngModel)]="user.state" type="text" class="form-control">
+      <input #state="ngModel" name="state" [(ngModel)]="user.state" type="text" class="form-control" [readonly]="readonly">
     </div>
     <div class="form-group">
       <h6>Postal Code</h6>
-      <input #postalCode="ngModel" name="postalCode" [(ngModel)]="user.postalCode" type="number" class="form-control">
+      <input #postalCode="ngModel" name="postalCode" [(ngModel)]="user.postalCode" type="number" class="form-control" [readonly]="readonly">
     </div>
   </div>
 </div>
