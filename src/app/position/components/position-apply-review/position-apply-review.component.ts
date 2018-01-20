@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppUser } from 'shared/models/app-user';
 
 @Component({
@@ -6,13 +6,10 @@ import { AppUser } from 'shared/models/app-user';
   templateUrl: './position-apply-review.component.html',
   styleUrls: ['./position-apply-review.component.css']
 })
-export class PositionApplyReviewComponent implements OnInit {
+export class PositionApplyReviewComponent {
   @Input('documentsSelected') documentsSelected: Document[];
   @Input('user') user: AppUser;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
