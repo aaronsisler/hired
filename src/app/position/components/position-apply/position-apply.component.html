@@ -23,9 +23,9 @@
 </div>
 <div *ngIf="isFinalReview" class="row">
   <div class="col-md-9">
-    Final Review works
+    <app-position-apply-review [documentsSelected]="documentsSelected"></app-position-apply-review>
     <br />
-    <button [routerLink]="['/position/', positionId]" class="btn btn-primary">Save and Submit</button>
+    <button [routerLink]="['/position/', positionId]" class="btn btn-primary">Save and Submit Application</button>
     <button (click)="updateView('DOCUMENTS')" class="btn btn-secondary">Back to Documents</button>
   </div>
 </div>

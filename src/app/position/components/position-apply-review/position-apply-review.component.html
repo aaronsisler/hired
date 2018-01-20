@@ -1,0 +1,22 @@
+<div class="card" *ngIf="documentsSelected">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Document Name</th>
+          <th>Date Uploaded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of documentsSelected">
+          <td>
+            <a href="{{document.downloadURL}}">{{document.fileName}}</a>
+          </td>
+          <td>
+            {{document.dateUploaded}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

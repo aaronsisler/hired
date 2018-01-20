@@ -11,6 +11,7 @@ import { PositionInternalViewComponent } from './components/position-internal-vi
 import { PositionsSubscribableComponent } from './components/positions-subscribable/positions-subscribable.component';
 import { PositionApplyComponent } from './components/position-apply/position-apply.component';
 import { UserModule } from 'user/user.module';
+import { PositionApplyReviewComponent } from './components/position-apply-review/position-apply-review.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { UserModule } from 'user/user.module';
     PositionExternalViewComponent,
     PositionInternalViewComponent,
     PositionsSubscribableComponent,
-    PositionApplyComponent
+    PositionApplyComponent,
+    PositionApplyReviewComponent
   ]
 })
 export class PositionModule { }
