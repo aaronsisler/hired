@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AppUser } from 'shared/models/app-user';
+import { Document } from 'shared/models/document'
 
 @Component({
   selector: 'app-position-apply-review',
@@ -7,9 +8,9 @@ import { AppUser } from 'shared/models/app-user';
   styleUrls: ['./position-apply-review.component.css']
 })
 export class PositionApplyReviewComponent {
-  @Input('documentsSelected') documentsSelected: Document[];
   @Input('user') user: AppUser;
+  @Input('documentsSelected') documentsSelected: Document[];
 
-  constructor() { }
-
+  constructor() {
+  }
 }

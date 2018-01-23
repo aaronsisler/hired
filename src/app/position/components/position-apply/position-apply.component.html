@@ -5,7 +5,12 @@
     <br />
     <app-user-address [user]="user"></app-user-address>
     <br />
-    <button (click)="updateView('DOCUMENTS')" class="btn btn-primary">Save and Continue</button>
+    <ng-template #applicationExists>
+      <div class="alert alert-danger">
+        Position has been applied to already
+      </div>
+    </ng-template>
+    <button *ngIf="!doesApplicationExist; else applicationExists" (click)="updateView('DOCUMENTS')" class="btn btn-primary">Save and Continue</button>
     <button type="button" [routerLink]="['/position/', positionId]" class="btn btn-secondary">Back to Position</button>
   </div>
   <div class="col-md-6">
@@ -26,7 +31,7 @@
   <div class="col-md-12">
     <app-position-apply-review [documentsSelected]="documentsSelected" [user]="user"></app-position-apply-review>
     <br />
-    <button [routerLink]="['/position/', positionId]" class="btn btn-primary">Submit Application</button>
+    <button (click)="submitApplication()" class="btn btn-primary">Submit Application</button>
     <button (click)="updateView('DOCUMENTS')" class="btn btn-secondary">Back to Documents</button>
   </div>
 </div>
