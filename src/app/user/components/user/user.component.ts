@@ -2,13 +2,14 @@ import { Component, Input } from '@angular/core';
 import { AppUser } from 'shared/models/app-user';
 
 @Component({
-  selector: 'app-user-address',
-  templateUrl: './user-address.component.html',
-  styleUrls: ['./user-address.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class UserAddressComponent {
+export class UserComponent {
   @Input('user') user: AppUser;
   @Input('readonly') readonly: boolean;
 
   constructor() { }
+
 }

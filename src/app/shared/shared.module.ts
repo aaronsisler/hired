@@ -8,6 +8,7 @@ import { AuthService } from 'shared/services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import { ApplicantService } from 'shared/services/applicant.service';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { DocumentUploadComponent } from './components/document-upload/document-u
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    ApplicantService
   ],
   declarations: [DocumentsComponent, DocumentUploadComponent]
 })

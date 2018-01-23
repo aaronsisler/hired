@@ -8,6 +8,7 @@ import { AppUser } from 'shared/models/app-user';
 })
 export class UserNameComponent {
   @Input('user') user: AppUser;
+  @Input('readonly') readonly: boolean;
 
   constructor() { }
 

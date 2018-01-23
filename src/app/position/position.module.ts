@@ -9,15 +9,20 @@ import { PositionCreateComponent } from './components/position-create/position-c
 import { PositionExternalViewComponent } from './components/position-external-view/position-external-view.component';
 import { PositionInternalViewComponent } from './components/position-internal-view/position-internal-view.component';
 import { PositionsSubscribableComponent } from './components/positions-subscribable/positions-subscribable.component';
+import { PositionApplyComponent } from './components/position-apply/position-apply.component';
+import { UserModule } from 'user/user.module';
+import { PositionApplyReviewComponent } from './components/position-apply-review/position-apply-review.component';
 
 @NgModule({
   imports: [
     SharedModule,
+    UserModule,
     RouterModule.forChild([
-      { path: 'position-create', component: PositionCreateComponent },
+      { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard]  },
       { path: 'position/:id', component: PositionExternalViewComponent },
-      { path: 'position-data/:id', component: PositionInternalViewComponent },
-      { path: 'positions-subscribable', component: PositionsSubscribableComponent }
+      { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard]  },
+      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard]  },
+      { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard]  }
     ])
   ],
   exports: [
@@ -32,7 +37,9 @@ import { PositionsSubscribableComponent } from './components/positions-subscriba
     PositionCreateComponent,
     PositionExternalViewComponent,
     PositionInternalViewComponent,
-    PositionsSubscribableComponent
+    PositionsSubscribableComponent,
+    PositionApplyComponent,
+    PositionApplyReviewComponent
   ]
 })
 export class PositionModule { }

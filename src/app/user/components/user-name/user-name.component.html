@@ -5,17 +5,22 @@
       <div class="form-row">
         <div class="col-4">
           <input #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="First Name"
-            id="inputFirstName">
+            id="inputFirstName" [readonly]="readonly">
         </div>
         <div class="col-4">
           <input #middleName="ngModel" [(ngModel)]="user.middleName" name="middleName" type="text" class="form-control" placeholder="Middle Name"
-            id="inputMiddleName">
+            id="inputMiddleName" [readonly]="readonly">
         </div>
         <div class="col-4">
           <input #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Last Name"
-            id="inputLastName">
+            id="inputLastName" [readonly]="readonly">
         </div>
       </div>
+    </div>
+    <div class="form-group">
+      <h6>Preferred Name</h6>
+      <input #displayName="ngModel" [(ngModel)]="user.displayName" name="displayName" type="text" class="form-control col-6" id="inputDisplayName"
+        [readonly]="readonly">
     </div>
   </div>
 </div>

@@ -3,26 +3,26 @@
     <div class="form-group">
       <h6>Email Address</h6>
       <input #email="ngModel" [(ngModel)]="user.email" name="email" type="email" class="form-control col-9" id="inputEmail" aria-describedby="emailHelp"
-        placeholder="name@company.com">
+        placeholder="name@company.com" [readonly]="readonly">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <h6>Phone Number</h6>
     <div class="form-row">
       <div class="col-2">
         <input #phoneAreaCode="ngModel" [(ngModel)]="user.phoneAreaCode" name="phoneAreaCode" type="text" class="form-control" placeholder="919"
-          id="inputAreaCode">
+          id="inputAreaCode" [readonly]="readonly">
       </div>
       <div class="col-2">
         <input #phonePrefix="ngModel" [(ngModel)]="user.phonePrefix" name="phonePrefix" type="text" class="form-control" placeholder="634"
-          id="inputPhonePrefix">
+          id="inputPhonePrefix" [readonly]="readonly">
       </div>
       <div class="col-2">
         <input #phoneLineNumber="ngModel" [(ngModel)]="user.phoneLineNumber" name="phoneLineNumber" type="text" class="form-control"
-          placeholder="5789" id="inputPhoneLineNumber">
+          placeholder="5789" id="inputPhoneLineNumber" [readonly]="readonly">
       </div>
       <div class="col-3">
         <input #phoneExt="ngModel" [(ngModel)]="user.phoneExt" name="phoneExt" type="text" class="form-control" placeholder="Phone Ext."
-          id="inputPhoneExt">
+          id="inputPhoneExt" [readonly]="readonly">
       </div>
     </div>
   </div>

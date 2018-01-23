@@ -7,8 +7,10 @@ import { UserContactComponent } from './components/user-contact/user-contact.com
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserAddressComponent } from './components/user-address/user-address.component';
 import { UserNameComponent } from './components/user-name/user-name.component';
+import { AuthGuard } from 'shared/services/auth-guard.service';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { DocumentService } from 'shared/services/document.service';
+import { UserComponent } from './components/user/user.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -22,7 +24,14 @@ import { DocumentService } from 'shared/services/document.service';
     UserAvatarComponent,
     UserAddressComponent,
     UserNameComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    UserComponent
+  ],
+  exports: [
+    UserNameComponent,
+    UserContactComponent,
+    UserAddressComponent,
+    UserComponent
   ],
   providers: [
     UserService,

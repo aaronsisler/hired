@@ -1,18 +1,16 @@
-<div class="card">
+<app-user [user]="user" [readonly]="true"></app-user>
+<br />
+<div class="card" *ngIf="documentsSelected">
   <div class="card-body">
-    <table class="table" *ngIf="documents$ | async as documents">
+    <table class="table">
       <thead>
         <tr>
-          <th *ngIf="isPositionApply" class="text-center">Submit Document</th>
           <th>Document Name</th>
           <th>Date Uploaded</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let document of documents">
-          <td *ngIf="isPositionApply" class="text-center">
-            <input type="checkbox" (change)="onChange(document)" [checked]="isCheckboxChecked(document)">
-          </td>
+        <tr *ngFor="let document of documentsSelected">
           <td>
             <a href="{{document.downloadURL}}">{{document.fileName}}</a>
           </td>
