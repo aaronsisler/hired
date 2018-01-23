@@ -1,0 +1,16 @@
+<div class="collapse navbar-collapse" id="notificationBlock">
+    <ul class="navbar-nav">
+      <li *ngIf="yesPlease" ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="Dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="badge badge-warning badge-pill">
+            {{3}}
+          </span>
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <app-notification></app-notification>
+          <app-notification></app-notification>
+        </div>
+      </li>
+    </ul>
+  </div>
