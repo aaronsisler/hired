@@ -1,21 +1,23 @@
-<div>
-  <a (click)="changeTheBoolean()">
-    <i class="fa fa-shopping-cart"></i>
-    <span class="badge badge-warning badge-pill">
-      {{notifications.length}}
-    </span>
-  </a>
-</div>
-<div *ngIf="anotherBool" class="notificationsPopOut">
-  <div class="notificationHeader">
-    <strong>Notifications</strong>
+<div *ngIf="notifications$ | async as notifications">
+  <div>
+    <a (click)="expandNotificationPopout()">
+      <i class="fa fa-shopping-cart"></i>
+      <span *ngIf="unreviewedNotificationsCount > 0" class="badge badge-warning badge-pill">
+        {{unreviewedNotificationsCount}}
+      </span>
+    </a>
   </div>
-  <div class="notificationsList">
-    <ul>
-      <li *ngFor="let notification of notifications">
-        <app-notification [notification]="notification"></app-notification>
-      </li>
-    </ul>
+  <div *ngIf="isNotificationPopoutShown" class="notificationsPopOut">
+    <div class="notificationHeader">
+      <strong>Notifications</strong>
+    </div>
+    <div class="notificationsList">
+      <ul>
+        <li *ngFor="let notification of notifications">
+          <app-notification [notification]="notification" [userId]="userId"></app-notification>
+        </li>
+      </ul>
+    </div>
+    <div class="notificationFooter"></div>
   </div>
-  <div class="notificationFooter"></div>
 </div>

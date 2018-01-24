@@ -1,3 +1,4 @@
+import { NotificationService } from 'shared/services/notification.service';
 import { Component, Input } from '@angular/core';
 import { Notification } from 'shared/models/notification';
 
@@ -8,13 +9,13 @@ import { Notification } from 'shared/models/notification';
 })
 export class NotificationComponent {
   @Input('notification') notification: Notification;
-  isHyperlink: boolean = true;
+  @Input('userId') userId: string;
 
-  constructor() { }
+  constructor(private notificationService: NotificationService) { }
 
   markNotificationViewed() {
-    this.isHyperlink = !this.isHyperlink;
     this.notification.hasBeenViewed = !this.notification.hasBeenViewed;
+    this.notificationService.markNotificationAsReviewed(this.userId, this.notification);
   }
 
 }

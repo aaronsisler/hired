@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { NotificationService } from 'shared/services/notification.service';
 import { Notification } from 'shared/models/notification';
 
 @Component({
@@ -6,22 +8,33 @@ import { Notification } from 'shared/models/notification';
   templateUrl: './notifications-container.component.html',
   styleUrls: ['./notifications-container.component.css']
 })
-export class NotificationsContainerComponent implements OnInit {
-  yesPlease: boolean = true;
-  expanded: boolean = true;
-  anotherBool: boolean = false;
+export class NotificationsContainerComponent implements OnInit, OnDestroy {
+  @Input('userId') userId: string;
+  isNotificationPopoutShown: boolean;
+  notifications$;
   notifications: Notification[] = [];
+  notificationSubscription: Subscription;
+  unreviewedNotificationsCount: number;
 
-  constructor() { }
 
-  ngOnInit() {
-    this.notifications.push({ hasBeenViewed: true, dateAdded: "2018/01/24 10:01:01", message: "This is notification 1" });
-    this.notifications.push({ hasBeenViewed: false, dateAdded: "2018/02/24 10:02:02", message: "This is notification 2" });
-    this.notifications.push({ hasBeenViewed: true, dateAdded: "2018/03/24 10:03:03", message: "This is notification 3" });
+  constructor(private notificationService: NotificationService) { }
+
+  async ngOnInit() {
+    this.notifications$ = await this.notificationService.getNotificationsForUser(this.userId);
+    this.notificationSubscription = await this.notificationService.getNotificationsForUser(this.userId)
+      .subscribe(x => {
+        this.notifications = x;
+        this.unreviewedNotificationsCount = this.notifications.filter(x => !x.hasBeenViewed).length;
+      });
   }
 
-  changeTheBoolean(){
-    this.anotherBool = !this.anotherBool;
+
+  ngOnDestroy(){
+    this.notificationSubscription.unsubscribe();
+  }
+
+  expandNotificationPopout(){
+    this.isNotificationPopoutShown = !this.isNotificationPopoutShown;
   }
 
 }
