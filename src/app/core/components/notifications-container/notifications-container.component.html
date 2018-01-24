@@ -1,16 +1,21 @@
-<div class="collapse navbar-collapse" id="notificationBlock">
-    <ul class="navbar-nav">
-      <li *ngIf="yesPlease" ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="Dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-shopping-cart"></i>
-          <span class="badge badge-warning badge-pill">
-            {{3}}
-          </span>
-        </a>
-        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <app-notification></app-notification>
-          <app-notification></app-notification>
-        </div>
+<div>
+  <a (click)="changeTheBoolean()">
+    <i class="fa fa-shopping-cart"></i>
+    <span class="badge badge-warning badge-pill">
+      {{notifications.length}}
+    </span>
+  </a>
+</div>
+<div *ngIf="anotherBool" class="notificationsPopOut">
+  <div class="notificationHeader">
+    <strong>Notifications</strong>
+  </div>
+  <div class="notificationsList">
+    <ul>
+      <li *ngFor="let notification of notifications">
+        <app-notification [notification]="notification"></app-notification>
       </li>
     </ul>
   </div>
+  <div class="notificationFooter"></div>
+</div>

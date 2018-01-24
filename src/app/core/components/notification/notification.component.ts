@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Notification } from 'shared/models/notification';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
+  @Input('notification') notification: Notification;
+  isHyperlink: boolean = true;
 
   constructor() { }
 
-  ngOnInit() {
+  markNotificationViewed() {
+    this.isHyperlink = !this.isHyperlink;
+    this.notification.hasBeenViewed = !this.notification.hasBeenViewed;
   }
 
 }
