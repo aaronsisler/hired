@@ -1,6 +1,6 @@
-export interface Notification {
+export class Notification {
   $key: string;
-  message: string;
-  dateAdded: string;
-  hasBeenViewed: boolean;
+  hasBeenViewed: boolean = false;
+
+  constructor(public message: string, public dateAdded: string){}
 }

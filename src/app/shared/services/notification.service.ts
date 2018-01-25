@@ -15,19 +15,22 @@ export class NotificationService {
     return this.db.object('/notifications/' + userId + '/' + notification.$key).update(notification);
   }
 
-  logTheThing(thing: string) {
-    console.log("User Id:", thing);
+  createNotification(userId: string, dateAdded: string, notificationMessage: string) {
+    let notification: Notification = new Notification(notificationMessage, dateAdded);
+    return this.db.list('/notifications/' + userId).push(notification);
   }
 
   getFilteredList(positionWatchersList: any[], positionId: string) {
     let listOfUserIds = [];
+    let dateAdded: string = new Date().toLocaleString();
+
     positionWatchersList.forEach(userRecord => {
       if (userRecord[positionId] == "ALL") {
         listOfUserIds.push(userRecord.$key)
       }
     });
-    console.log("List of UserIds", listOfUserIds);
-    listOfUserIds.forEach(userId => this.logTheThing(userId))
+
+    listOfUserIds.forEach(userId => this.createNotification(userId, dateAdded, "Position Created"))
     return listOfUserIds;
   }
 

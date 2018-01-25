@@ -50,14 +50,10 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
     result.subscribe(x => this.doesApplicationExist = x.$exists());
   }
 
-  triggerNotification() {
-    this.notificationService.sendNewApplicationNotification(this.positionId).toPromise();
-  }
-
   submitApplication() {
-    return this.applicantService.submitApplication(this.positionId, this.user.$key, this.documentsSelected)
-      //.then(() => this.notificationService.sendNewApplicationNotification(this.positionId))
-      .then(() => this.router.navigateByUrl('/'));
+    this.applicantService.submitApplication(this.positionId, this.user.$key, this.documentsSelected)
+    this.notificationService.sendNewApplicationNotification(this.positionId).toPromise();
+    this.router.navigateByUrl('/');
   }
 
   updateView(viewToBeShown: string) {
@@ -76,5 +72,4 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
-
 }
