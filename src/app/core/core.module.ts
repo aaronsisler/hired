@@ -1,14 +1,16 @@
-import { AuthGuard } from './../shared/services/auth-guard.service';
+import { AuthGuard } from 'shared/services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { NotificationsContainerComponent } from './components/notifications-container/notifications-container.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PositionModule } from 'position/position.module';
+
 
 @NgModule({
   imports: [
@@ -20,10 +22,19 @@ import { PositionModule } from 'position/position.module';
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
     ])
   ],
-  exports : [
+  exports: [
     HomeComponent,
     NavbarComponent
   ],
-  declarations: [HomeComponent, LoginComponent, NotificationComponent, NavbarComponent, DashboardComponent, LogoutComponent]
+  declarations:
+    [
+      HomeComponent,
+      LoginComponent,
+      NotificationComponent,
+      NotificationsContainerComponent,
+      NavbarComponent,
+      DashboardComponent,
+      LogoutComponent
+    ]
 })
 export class CoreModule { }

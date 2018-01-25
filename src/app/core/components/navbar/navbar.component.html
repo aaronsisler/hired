@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-  <div class="container">
+  <div *ngIf="appUser" class="container">
     <a class="navbar-brand" routerLink="/">
       <i class="fa fa-search"></i>
     </a>
+    <app-notifications-container [userId]="appUser.$key"></app-notifications-container>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,9 +16,11 @@
           </li>
         </ng-template>
         <li *ngIf="appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ appUser.displayName }}
-          </a>
+          <div ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="Dropdown" aria-haspopup="true" aria-expanded="false">
+            <a id="dropdown01">
+              {{ appUser.displayName }}
+            </a>
+          </div>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" [routerLink]="['/dashboard']">Dashboard</a>
             <a class="dropdown-item" [routerLink]="['/user-account/', appUser.$key]">User Account</a>

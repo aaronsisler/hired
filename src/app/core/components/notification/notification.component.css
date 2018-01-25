@@ -1,0 +1,12 @@
+.hyperlink:hover{
+  background-color: thistle;
+}
+
+.hasNotBeenViewed{
+  background-color: whitesmoke;
+}
+
+.notification {
+  padding: 5px 30px 5px 30px;
+  cursor: pointer;
+}

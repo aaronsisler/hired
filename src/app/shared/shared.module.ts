@@ -1,3 +1,4 @@
+import { NotificationService } from './services/notification.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +18,7 @@ import { ApplicantService } from 'shared/services/applicant.service';
     CustomFormsModule,
     NgbModule.forRoot()
   ],
-  exports:[
+  exports: [
     CommonModule,
     FormsModule,
     DocumentsComponent,
@@ -28,7 +29,8 @@ import { ApplicantService } from 'shared/services/applicant.service';
     AuthService,
     AuthGuard,
     UserService,
-    ApplicantService
+    ApplicantService,
+    NotificationService
   ],
   declarations: [DocumentsComponent, DocumentUploadComponent]
 })

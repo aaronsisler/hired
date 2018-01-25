@@ -1,3 +1,7 @@
-<p>
-  notification works!
-</p>
+<div [class.hasNotBeenViewed]="!notification.hasBeenViewed" class="notification hyperlink">
+  <a>
+    <div (click)="markNotificationViewed()">
+      {{notification.message}}
+    </div>
+  </a>
+</div>
