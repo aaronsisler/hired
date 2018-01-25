@@ -28,13 +28,11 @@ export class NotificationsContainerComponent implements OnInit, OnDestroy {
       });
   }
 
+  toggleNotificationPopout(){
+    this.isNotificationPopoutShown = !this.isNotificationPopoutShown;
+  }
 
   ngOnDestroy(){
     this.notificationSubscription.unsubscribe();
   }
-
-  expandNotificationPopout(){
-    this.isNotificationPopoutShown = !this.isNotificationPopoutShown;
-  }
-
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NotificationService } from 'shared/services/notification.service';
 import { Component, Input } from '@angular/core';
 import { Notification } from 'shared/models/notification';
@@ -11,11 +12,10 @@ export class NotificationComponent {
   @Input('notification') notification: Notification;
   @Input('userId') userId: string;
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService, private router: Router) { }
 
   markNotificationViewed() {
     this.notification.hasBeenViewed = !this.notification.hasBeenViewed;
     this.notificationService.markNotificationAsReviewed(this.userId, this.notification);
   }
-
 }

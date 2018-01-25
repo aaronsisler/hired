@@ -1,6 +1,6 @@
 <div *ngIf="notifications$ | async as notifications">
   <div>
-    <a (click)="expandNotificationPopout()">
+    <a (click)="toggleNotificationPopout()">
       <i class="fa fa-shopping-cart"></i>
       <span *ngIf="unreviewedNotificationsCount > 0" class="badge badge-warning badge-pill">
         {{unreviewedNotificationsCount}}
