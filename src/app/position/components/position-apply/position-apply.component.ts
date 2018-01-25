@@ -1,3 +1,4 @@
+import { NotificationService } from 'shared/services/notification.service';
 import { Document } from 'shared/models/document';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -27,6 +28,7 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+    private notificationService: NotificationService,
     private route: ActivatedRoute,
     private applicantService: ApplicantService,
     private router: Router) {
@@ -48,8 +50,13 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
     result.subscribe(x => this.doesApplicationExist = x.$exists());
   }
 
+  triggerNotification() {
+    this.notificationService.sendNewApplicationNotification(this.positionId).toPromise();
+  }
+
   submitApplication() {
     return this.applicantService.submitApplication(this.positionId, this.user.$key, this.documentsSelected)
+      //.then(() => this.notificationService.sendNewApplicationNotification(this.positionId))
       .then(() => this.router.navigateByUrl('/'));
   }
 
