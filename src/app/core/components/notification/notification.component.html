@@ -1,6 +1,6 @@
-<div [class.hasNotBeenViewed]="!notification.hasBeenViewed" class="notification hyperlink">
+<div [class.hasNotBeenViewed]="!notification.hasBeenViewed" class="notification hyperlink" (click)="markNotificationViewed()">
   <a>
-    <div (click)="markNotificationViewed()">
+    <div >
       {{notification.message}}
     </div>
   </a>

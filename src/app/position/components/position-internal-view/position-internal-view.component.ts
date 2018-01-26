@@ -34,6 +34,7 @@ export class PositionInternalViewComponent implements OnInit {
       this.positionService.get(this.positionId).take(1).subscribe(position => this.position = position);
     }
   }
+
   async ngOnInit() {
     await this.authService.user$.take(1).toPromise().then(user => this.userId = user.uid);
     this.positionWatcherService.getPosition(this.userId, this.positionId)

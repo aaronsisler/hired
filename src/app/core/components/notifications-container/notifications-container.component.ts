@@ -16,7 +16,6 @@ export class NotificationsContainerComponent implements OnInit, OnDestroy {
   notificationSubscription: Subscription;
   unreviewedNotificationsCount: number;
 
-
   constructor(private notificationService: NotificationService) { }
 
   async ngOnInit() {
