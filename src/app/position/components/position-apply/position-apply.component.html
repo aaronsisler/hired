@@ -14,27 +14,6 @@
     </div>
   </div>
 </div>
-
-<!-- <div *ngIf="isUserInfo && user" class="row">
-  <div class="col-md-6">
-    <app-user-name [user]="user"></app-user-name>
-    <br />
-    <app-user-address [user]="user"></app-user-address>
-    <br />
-  </div>
-  <div class="col-md-6">
-    <app-user-contact [user]="user"></app-user-contact>
-  </div>
-  <div class="col-md-6">
-    <ng-template #applicationExists>
-      <div class="alert alert-danger">
-        Position has been applied to already
-      </div>
-    </ng-template>
-    <button *ngIf="!doesApplicationExist; else applicationExists" (click)="updateView('DOCUMENTS')" class="btn btn-primary">Save and Continue</button>
-    <button type="button" [routerLink]="['/position/', positionId]" class="btn btn-secondary">Back to Position</button>
-  </div>
-</div> -->
 <div *ngIf="isDocumentUpload" class="row">
   <div class="col-md-9">
     <app-document-upload [userId]="userId"></app-document-upload>
