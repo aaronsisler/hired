@@ -20,6 +20,8 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   user: AppUser;
   documentsSelected: Document[] = [];
   doesApplicationExist: boolean;
+  notificationSubscription: Subscription;
+  thing: any;
 
   isUserInfo: boolean = true;
   isDocumentUpload: boolean;
@@ -50,9 +52,9 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
     result.subscribe(x => this.doesApplicationExist = x.$exists());
   }
 
-  submitApplication() {
+  async submitApplication() {
     this.applicantService.submitApplication(this.positionId, this.user.$key, this.documentsSelected)
-    this.notificationService.sendNewApplicationNotification(this.positionId).toPromise();
+    this.notificationService.sendNewApplicationNotification(this.positionId);
     this.router.navigateByUrl('/');
   }
 
@@ -71,5 +73,6 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
+    //this.notificationSubscription.unsubscribe();
   }
 }

@@ -25,20 +25,21 @@ export class NotificationService {
     let dateAdded: string = new Date().toLocaleString();
 
     positionWatchersList.forEach(userRecord => {
-      if (userRecord[positionId] == "ALL") {
+      if (userRecord[positionId] && userRecord[positionId]["subscriptionLevel"] == "ALL") {
         listOfUserIds.push(userRecord.$key)
       }
     });
 
-    listOfUserIds.forEach(userId => this.createNotification(userId, dateAdded, "Position Created"))
-    return listOfUserIds;
+    listOfUserIds.forEach(userId => this.createNotification(userId, dateAdded, "Application for Position " + positionId + " created"))
   }
 
-  sendNewApplicationNotification(positionId: string) {
-    return this.getPositionWatchersList().switchMap(positionWatchersList => this.getFilteredList(positionWatchersList, positionId));
+  async sendNewApplicationNotification(positionId: string) {
+    let positionWatchers$ = await this.getPositionWatchers();
+    positionWatchers$.take(1)
+      .subscribe(positionWatchersList => this.getFilteredList(positionWatchersList, positionId));
   }
 
-  getPositionWatchersList() {
+  getPositionWatchers() {
     return this.db.list('/position-watchers');
   }
 }
