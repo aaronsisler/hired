@@ -7,7 +7,7 @@
       </span>
     </a>
   </div>
-  <div *ngIf="isNotificationPopoutShown" class="notificationsPopOut">
+  <div *ngIf="isNotificationPopoutShown" class="notificationsPopOut" (click)="toggleNotificationPopout()">
     <div class="notificationHeader">
       <strong>Notifications</strong>
     </div>

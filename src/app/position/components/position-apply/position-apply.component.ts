@@ -20,7 +20,6 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   user: AppUser;
   documentsSelected: Document[] = [];
   doesApplicationExist: boolean;
-  notificationSubscription: Subscription;
   thing: any;
 
   isUserInfo: boolean = true;
@@ -73,6 +72,5 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
-    //this.notificationSubscription.unsubscribe();
   }
 }

@@ -15,12 +15,12 @@ export class NotificationService {
     return this.db.object('/notifications/' + userId + '/' + notification.$key).update(notification);
   }
 
-  createNotification(userId: string, dateAdded: string, notificationMessage: string) {
-    let notification: Notification = new Notification(notificationMessage, dateAdded);
+  createNotification(userId: string, dateAdded: string, notificationMessage: string, hrefLocation: string) {
+    let notification: Notification = new Notification(notificationMessage, hrefLocation, dateAdded);
     return this.db.list('/notifications/' + userId).push(notification);
   }
 
-  getFilteredList(positionWatchersList: any[], positionId: string) {
+  getFilteredList(positionWatchersList: any[], positionId: string, subLevel: string, notificationMessage: string, hrefLocation: string) {
     let listOfUserIds = [];
     let dateAdded: string = new Date().toLocaleString();
 
@@ -30,13 +30,16 @@ export class NotificationService {
       }
     });
 
-    listOfUserIds.forEach(userId => this.createNotification(userId, dateAdded, "Application for Position " + positionId + " created"))
+    listOfUserIds.forEach(userId => this.createNotification(userId, dateAdded, notificationMessage, hrefLocation))
   }
 
   async sendNewApplicationNotification(positionId: string) {
+    let subLevel = "ALL";
+    let notificationMessage = "Application for Position " + positionId + " created";
+    let hrefLocation = "/position-data/" + positionId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
-      .subscribe(positionWatchersList => this.getFilteredList(positionWatchersList, positionId));
+      .subscribe(positionWatchersList => this.getFilteredList(positionWatchersList, positionId, subLevel, notificationMessage, hrefLocation));
   }
 
   getPositionWatchers() {
