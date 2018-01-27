@@ -13,6 +13,7 @@ import { PositionApplyComponent } from './components/position-apply/position-app
 import { UserModule } from 'user/user.module';
 import { PositionApplyReviewComponent } from './components/position-apply-review/position-apply-review.component';
 import { PositionSubscriptionComponent } from './components/position-subscription/position-subscription.component';
+import { PositionDetailsComponent } from './components/position-details/position-details.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { PositionSubscriptionComponent } from './components/position-subscriptio
     PositionsSubscribableComponent,
     PositionApplyComponent,
     PositionApplyReviewComponent,
-    PositionSubscriptionComponent
+    PositionSubscriptionComponent,
+    PositionDetailsComponent
   ]
 })
 export class PositionModule { }

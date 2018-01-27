@@ -1,11 +1,17 @@
-<div class="input-group">
-    <div class="input-group-btn">
-      <button (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Update Subscription</button>
+<div class="card-footer text-muted">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group">
+        <div class="input-group-btn">
+          <button (click)="subscribeToPosition(selectedSubscriptionLevel)" class="btn btn-primary">Update Subscription</button>
+        </div>
+        <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
+          class="form-control" required>
+          <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
+            {{ subLevel }}
+          </option>
+        </select>
+      </div>
     </div>
-    <select #subscriptionLevel="ngModel" [(ngModel)]="selectedSubscriptionLevel" name="selectedSubscriptionLevel" id="selectedSubscriptionLevel"
-      class="form-control" required>
-      <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
-        {{ subLevel }}
-      </option>
-    </select>
   </div>
+</div>

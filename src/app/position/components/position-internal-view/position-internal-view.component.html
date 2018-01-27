@@ -1,22 +1,21 @@
-<div *ngIf="position" class="card">
-  <div class="card-header text-muted">
-    Position Id: {{ position.id }}
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">{{ position.title }}</h4>
-    <h6 class="card-subtitle mb-2 text-muted">{{ position.location }}</h6>
-    <p class="card-text">{{ position.description }}</p>
-  </div>
-  <div class="card-footer text-muted">
-    <div class="row">
-      <div class="col-md-6">
+<button *ngIf="!isAddSub; else addSub" routerLink="/dashboard" class="btn btn-secondary">Back to Dashboard</button>
+<ng-template #addSub>
+  <button routerLink="/positions-subscribable" class="btn btn-secondary">Back to Positions</button>
+</ng-template>
+<br />
+<br />
+<ngb-tabset>
+  <ngb-tab title="Position Details">
+    <ng-template ngbTabContent>
+      <div *ngIf="position" class="card">
+        <app-position-details [position]="position"></app-position-details>
         <app-position-subscription [userId]="userId" [positionId]="positionId"></app-position-subscription>
-        <br />
-        <button *ngIf="!isAddSub; else addSub" routerLink="/dashboard" class="btn btn-secondary">Back</button>
-        <ng-template #addSub>
-          <button routerLink="/positions-subscribable" class="btn btn-secondary">Back</button>
-        </ng-template>
       </div>
-    </div>
-  </div>
-</div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Applicants">
+    <ng-template ngbTabContent>
+      Applicants
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
