@@ -11,10 +11,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class PositionsComponent implements OnDestroy {
   positions: Position[];
   filteredPositions: any[];
-  subscription: Subscription;
+  positionSubscription: Subscription;
 
   constructor(private positionService: PositionService) {
-    this.subscription = this.positionService.getAll()
+    this.positionSubscription = this.positionService.getAll()
       .subscribe(positions => this.filteredPositions = this.positions = positions);
   }
 
@@ -25,6 +25,6 @@ export class PositionsComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.positionSubscription.unsubscribe();
   }
 }

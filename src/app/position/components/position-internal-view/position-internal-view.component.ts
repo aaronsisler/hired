@@ -17,14 +17,11 @@ export class PositionInternalViewComponent implements OnInit {
   position: Position;
   positionId: string;
   userId: string;
-  //subscriptionLevels: string[] = ["ALL", "SOME", "REQUIRED", "NONE"];
-  //selectedSubscriptionLevel: string;
   isAddSub: any;
 
   constructor(
     private route: ActivatedRoute,
     private positionService: PositionService,
-    //private positionWatcherService: PositionWatcherService,
     private authService: AuthService
   ) {
     this.positionId = this.route.snapshot.paramMap.get('id');
@@ -36,9 +33,5 @@ export class PositionInternalViewComponent implements OnInit {
 
   async ngOnInit() {
     await this.authService.user$.take(1).toPromise().then(user => this.userId = user.uid);
-    // this.positionWatcherService.getPosition(this.userId, this.positionId)
-    //   .subscribe(positionWatcher => {
-    //     this.selectedSubscriptionLevel = positionWatcher.subscriptionLevel ? positionWatcher.subscriptionLevel : 'NONE';
-    //   });
   }
 }
