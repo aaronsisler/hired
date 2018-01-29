@@ -16,11 +16,11 @@ export class PositionWatcherService {
     return this.db.object('position-watchers/' + userId + '/' + key);
   }
 
-  updateSubscriptionLevel(userId: string, key: string, subscriptionLevel: string) {
-    let position$ = this.getPosition(userId, key);
+  updateSubscriptionLevel(userId: string, positionKey: string, positionId: string, subscriptionLevel: string) {
+    let position$ = this.getPosition(userId, positionKey);
     if (subscriptionLevel == "NONE") {
       return position$.remove();
     }
-    return position$.update({ subscriptionLevel: subscriptionLevel });
+    return position$.update({ jobId: positionId , subscriptionLevel: subscriptionLevel });
   }
 }

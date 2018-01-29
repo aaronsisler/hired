@@ -1,0 +1,20 @@
+<button type="button" [routerLink]="['/position-data/', positionId]" class="btn btn-secondary">Back to Position</button>
+<br />
+<br />
+<ngb-tabset>
+  <ngb-tab title="Applicant Status">
+    <ng-template ngbTabContent>
+      Applicant Status. Will contain Status and Notes
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Applicant Details">
+    <ng-template ngbTabContent>
+      <app-user *ngIf="applicant" [user]="applicant.user" [readonly]="true"></app-user>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Applicant Documents">
+    <ng-template ngbTabContent>
+      Applicant Documents
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

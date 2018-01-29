@@ -27,8 +27,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(positionsWatched => this.filteredPositionsWatched = this.positionsWatched = positionsWatched);
   }
 
-  onSubLevelChange(key: string, level) {
-    this.positionWatcherService.updateSubscriptionLevel(this.userId, key, level);
+  onSubLevelChange(key: string, jobId: string, level) {
+    this.positionWatcherService.updateSubscriptionLevel(this.userId, key, jobId, level);
   }
 
   filter(query: string) {
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.positionWatcherSubscription.unsubscribe();
   }
 
-  navigateToSubscribablePositions(){
+  navigateToSubscribablePositions() {
     this.router.navigateByUrl('/positions-subscribable');
   }
 }

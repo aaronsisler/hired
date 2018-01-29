@@ -1,7 +1,7 @@
 <div *ngIf="notifications$ | async as notifications">
   <div>
     <a (click)="toggleNotificationPopout()">
-      <i class="fa fa-shopping-cart"></i>
+      <i class="fa fa-envelope-o"></i>
       <span *ngIf="unreviewedNotificationsCount > 0" class="badge badge-warning badge-pill">
         {{unreviewedNotificationsCount}}
       </span>
