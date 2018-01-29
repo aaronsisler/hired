@@ -15,7 +15,7 @@
   <tbody>
     <tr *ngFor="let position of filteredPositions">
       <td>
-        <a [routerLink]="['/position/', position.$key]">{{ position.jobId }}</a>
+        <a [routerLink]="['/position/', position.$key]">{{ position.positionId }}</a>
       </td>
       <td>{{ position.title }}</td>
       <td>{{ position.location }}</td>

@@ -1,7 +1,7 @@
 
 export class PositionWatched {
     $key: string;
-    jobId: string;
+    positionId: string;
     subscriptionLevel: string;
 
     constructor(init?: Partial<PositionWatched>) {

@@ -4,7 +4,6 @@ import { Position } from 'shared/models/position';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PositionService } from 'shared/services/position.service';
-import 'rxjs/add/operator/take';
 import { Subscription } from 'rxjs/Subscription';
 
 
@@ -18,6 +17,7 @@ export class PositionInternalViewComponent implements OnInit {
   positionId: string;
   userId: string;
   isAddSub: any;
+  positionSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,12 +26,14 @@ export class PositionInternalViewComponent implements OnInit {
   ) {
     this.positionId = this.route.snapshot.paramMap.get('id');
     this.isAddSub = this.route.snapshot.paramMap.get('isAddSub');
-    if (this.positionId) {
-      this.positionService.get(this.positionId).take(1).subscribe(position => this.position = position);
-    }
+    this.positionSubscription = this.positionService.get(this.positionId).subscribe(position => this.position = position);
   }
 
   async ngOnInit() {
     await this.authService.user$.take(1).toPromise().then(user => this.userId = user.uid);
+  }
+
+  ngOnDestroy() {
+    this.positionSubscription.unsubscribe();
   }
 }

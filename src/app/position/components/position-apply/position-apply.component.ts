@@ -20,7 +20,6 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   user: AppUser;
   documentsSelected: Document[] = [];
   doesApplicationExist: boolean;
-  thing: any;
 
   isUserInfo: boolean = true;
   isDocumentUpload: boolean;
@@ -42,7 +41,7 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.positionId = this.route.snapshot.paramMap.get('id');
     this.userSubscription = await this.authService.user$.subscribe(user => this.userId = user.uid);
-    this.userService.get(this.userId).take(1).subscribe(user => this.user = user);
+    this.userService.get(this.userId).take(1).subscribe(user => this.user = new AppUser(user, user.$key));
     this.checkIfApplicationExists();
   }
 

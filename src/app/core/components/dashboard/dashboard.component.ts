@@ -27,8 +27,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(positionsWatched => this.filteredPositionsWatched = this.positionsWatched = positionsWatched);
   }
 
-  onSubLevelChange(key: string, jobId: string, level) {
-    this.positionWatcherService.updateSubscriptionLevel(this.userId, key, jobId, level);
+  onSubLevelChange(key: string, positionId: string, level) {
+    this.positionWatcherService.updateSubscriptionLevel(this.userId, key, positionId, level);
   }
 
   filter(query: string) {

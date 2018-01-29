@@ -11,9 +11,9 @@ export class ApplicantService {
 
   async submitApplication(positionId: string, user: AppUser, userDocuments: Document[]) {
     let applicationStatus: string = "APPLIED";
-    let applicant = new Applicant(user, applicationStatus, userDocuments);
-    let result = await this.db.list('/applicants/').push(applicant);
-    return this.db.object('/applications/' + positionId + '/' + user.$key)
+    let applicant = {user: user, applicationStatus: applicationStatus, applicationDocuments: userDocuments};
+    let result = await this.db.list('/applicants/').push(new Applicant({...applicant}));
+    return this.db.object('/applications/' + positionId + '/' + user.userId)
       .update({ applicantId: result.key, displayName: user.displayName, applicationStatus: applicationStatus })
   }
 
@@ -25,7 +25,16 @@ export class ApplicantService {
     return this.db.list('/applications/' + positionId);
   }
 
-  getApplicant(applicantId: string){
+  getApplicant(applicantId: string) {
     return this.db.object('/applicants/' + applicantId);
+  }
+
+  updateApplicationStatus(applicant: Applicant, positionId: string, applicationStatus: string) {
+    var mergedApplicationStatus = {};
+    mergedApplicationStatus['/applicants/' + applicant.$key + '/applicationStatus/'] = applicationStatus;
+    mergedApplicationStatus['/applications/' + positionId + '/' + applicant.user.userId + '/applicationStatus'] = applicationStatus;
+
+    var firebaseDatabaseRef = this.db.database.ref('/');
+    return firebaseDatabaseRef.update(mergedApplicationStatus);
   }
 }

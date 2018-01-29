@@ -19,7 +19,7 @@ export class ApplicantProfileComponent implements OnDestroy {
     this.positionId = this.route.snapshot.paramMap.get('positionId');
     this.applicantId = this.route.snapshot.paramMap.get('applicantId');
     this.applicantSubscription = this.applicantService.getApplicant(this.applicantId)
-      .subscribe(applicant => this.applicant = applicant)
+      .subscribe(applicant => this.applicant = applicant);
   }
 
   ngOnDestroy() {
