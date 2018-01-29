@@ -1,5 +1,4 @@
 import { PositionWatcher } from 'shared/models/position-watcher';
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { PositionWatcherService } from 'position/services/position-watcher.service';
@@ -12,9 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  positionsWatcher$: Observable<PositionWatcher>;
   userSubscription: Subscription;
+  positionWatcherSubscription: Subscription;
   userId: string;
+  positionsWatched: any = [];
+  filteredPositionsWatched: any = [];
   subscriptionLevels: any[] = ["ALL", "SOME", "REQUIRED"];
 
   constructor(
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.userSubscription = await this.authService.user$.subscribe(user => this.userId = user.uid);
-    this.positionsWatcher$ = await this.positionWatcherService.getAll(this.userId);
+    this.positionWatcherSubscription = this.positionWatcherService.getAll(this.userId)
+      .subscribe(positionsWatched => this.filteredPositionsWatched = this.positionsWatched = positionsWatched);
   }
 
   onSubLevelChange(key: string, level) {
@@ -30,14 +32,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string) {
-    //TODO Need to filter a live Observable
-    // this.filteredPositions = (query) ?
-    //   this.positions.filter(position => position.title.toLowerCase().includes(query.toLowerCase())) :
-    //   this.positions;
+    this.filteredPositionsWatched = (query) ?
+      this.positionsWatched.filter(positionWatched => positionWatched.$key.toLowerCase().includes(query.toLowerCase())) :
+      this.positionsWatched;
   }
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
+    this.positionWatcherSubscription.unsubscribe();
   }
 
   navigateToSubscribablePositions(){

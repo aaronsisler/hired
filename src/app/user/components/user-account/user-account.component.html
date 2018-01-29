@@ -1,3 +1,6 @@
+<button type="button" routerLink="/dashboard" class="btn btn-secondary">Back to Dashboard</button>
+<br />
+<br />
 <div *ngIf="userId">
   <ngb-tabset>
     <ngb-tab title="User Profile">
@@ -8,6 +11,7 @@
     <ngb-tab title="Document Management">
       <ng-template ngbTabContent>
         <app-document-upload [userId]="userId"></app-document-upload>
+        <br />
         <app-documents [userId]="userId"></app-documents>
       </ng-template>
     </ngb-tab>
