@@ -21,6 +21,6 @@ export class PositionWatcherService {
     if (subscriptionLevel == "NONE") {
       return position$.remove();
     }
-    return position$.update({ jobId: positionId , subscriptionLevel: subscriptionLevel });
+    return position$.update({ positionId: positionId , subscriptionLevel: subscriptionLevel });
   }
 }

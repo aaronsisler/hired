@@ -1,7 +1,7 @@
 export interface Position {
     $key: string;
     title: string;
-    jobId: string;
+    positionId: string;
     location: string;
     description: string;
 }
