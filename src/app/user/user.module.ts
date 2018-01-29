@@ -15,7 +15,7 @@ import { UserComponent } from './components/user/user.component';
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'user-account/:id', component: UserAccountComponent }
+      { path: 'user-account/:id', component: UserAccountComponent, canActivate: [AuthGuard] }
     ])
   ],
   declarations: [

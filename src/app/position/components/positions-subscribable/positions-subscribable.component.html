@@ -15,7 +15,7 @@
       <th>Location</th>
     </tr>
   </thead>
-  <tbody *ngIf="positionsWatched">
+  <tbody *ngIf="filteredPositions">
     <tr *ngFor="let position of filteredPositions">
       <td>
         <a [routerLink]="['/position-data/', position.$key, {isAddSub:true}]">{{ position.id }}</a>

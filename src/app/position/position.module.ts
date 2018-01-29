@@ -23,11 +23,11 @@ import { ApplicantModule } from 'applicant/applicant.module';
     UserModule,
     ApplicantModule,
     RouterModule.forChild([
-      { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard]  },
+      { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard] },
       { path: 'position/:id', component: PositionExternalViewComponent },
-      { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard]  },
-      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard]  },
-      { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard]  }
+      { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard] },
+      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard] },
+      { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [

@@ -31,9 +31,9 @@ export class PositionsSubscribableComponent implements OnInit, OnDestroy {
 
     this.positionWatcherSubscription = this.authService.user$
       .switchMap(user => this.positionWatcherService.getAll(user.uid))
-      .subscribe(positionWatcher => {
-        this.positionsWatched = positionWatcher.positionsWatched;
-        this.filteredPositions = this.positions = this.positions.filter(position => !positionWatcher.positionsWatched.some(f => f.$key == position.$key));
+      .subscribe(positionsWatched => {
+        this.positionsWatched = positionsWatched;
+        this.filteredPositions = this.positions = this.positions.filter(position => !positionsWatched.some(f => f.$key == position.$key));
       });
   }
 

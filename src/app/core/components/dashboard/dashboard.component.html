@@ -1,4 +1,4 @@
-<div *ngIf="positionsWatcher$ | async as positionsWatcher">
+<div *ngIf="positionsWatched">
   <div>
     <h4>Watched Positions</h4>
     <button (click)="navigateToSubscribablePositions()" class="btn btn-primary">Watch New Position</button>
@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let positionWatched of positionsWatcher.positionsWatched">
+      <tr *ngFor="let positionWatched of filteredPositionsWatched">
         <td>
           <a [routerLink]="['/position-data/', positionWatched.$key]">{{ positionWatched.$key }}</a>
         </td>

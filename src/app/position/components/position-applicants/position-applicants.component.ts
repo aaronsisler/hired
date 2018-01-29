@@ -14,34 +14,20 @@ export class PositionApplicantsComponent implements OnInit, OnDestroy {
   positionApplicants: any[] = [];
   filteredPositionApplicants: any[] = [];
   applicantSubscription: Subscription;
-  query: any;
 
   constructor(private applicantService: ApplicantService, private userService: UserService) {
   }
 
   async ngOnInit() {
-    // this.applicantSubscription = this.applicantService.getApplicantsForPosition(this.positionId)
-    //   .subscribe(userIds => {
-    //     userIds.forEach(userId => {
-    //       this.userService.get(userId.$key).subscribe(user => {
-    //         if (this.positionApplicants.find(x => x.userId == user.$key)) {
-    //           this.positionApplicants.find(x => x.userId == user.$key)["displayName"] = user.displayName; return;
-    //         }
-    //         this.positionApplicants.push({ userId: user.$key, displayName: user.displayName ? user.displayName : "Unknown" })
-    //       });
-    //     })
-    //     this.filteredPositionApplicants = this.positionApplicants;
-    //   });
-
-    this.applicantSubscription = this.applicantService.getApplicantsForPositionUserInj(this.positionId)
-      .subscribe(userList => {
-        this.filteredPositionApplicants = this.positionApplicants = userList
+    this.applicantSubscription = this.applicantService.getApplicantsForPosition(this.positionId)
+      .subscribe(applicantList => {
+        this.filteredPositionApplicants = this.positionApplicants = applicantList
       })
   }
 
   filter(query: string) {
     this.filteredPositionApplicants = (query) ?
-      this.positionApplicants.filter(userId => userId.displayName.toLowerCase().includes(query.toLowerCase())) :
+      this.positionApplicants.filter(applicant => applicant.displayName.toLowerCase().includes(query.toLowerCase())) :
       this.positionApplicants;
   }
 

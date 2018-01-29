@@ -1,19 +1,20 @@
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { Document } from 'shared/models/document'
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { AppUser } from 'shared/models/app-user';
+import { Applicant } from 'shared/models/applicant';
 
 @Injectable()
 export class ApplicantService {
 
-  constructor(private db: AngularFireDatabase, private userService: UserService) { }
+  constructor(private db: AngularFireDatabase) { }
 
-  submitApplication(positionId: string, userId: string, userDocuments: Document[]) {
-    let userDocumentKeys: string[] = [];
-    userDocuments.forEach(document => userDocumentKeys.push(document.$key));
-    return this.db.object('/applications/' + positionId + '/' + userId)
-      .update({ userDocumentKeys: userDocumentKeys });
+  async submitApplication(positionId: string, user: AppUser, userDocuments: Document[]) {
+    let applicationStatus: string = "APPLIED";
+    let applicant = new Applicant(user, applicationStatus, userDocuments);
+    let result = await this.db.list('/applicants/').push(applicant);
+    return this.db.object('/applications/' + positionId + '/' + user.$key)
+      .update({ applicantId: result.key, displayName: user.displayName, applicationStatus: applicationStatus })
   }
 
   async checkIfApplicationExistsForPosition(positionId: string, userId: string) {
@@ -22,26 +23,5 @@ export class ApplicantService {
 
   getApplicantsForPosition(positionId: string) {
     return this.db.list('/applications/' + positionId);
-  }
-
-  getApplicantsForPositionUserInj(positionId: string) {
-
-    return this.db.list('/applications/' + positionId)
-      .map(userIds => this.getUsernames(userIds));
-  }
-
-  getUsernames(users) {
-    let userInfoList = [];
-    users.forEach(user => {
-      this.userService.get(user.$key)
-        .subscribe(userInfo => {
-          if (userInfoList.find(x => x.userId == userInfo.$key)) {
-            userInfoList.find(x => x.userId == userInfo.$key)["displayName"] = userInfo.displayName; return;
-          }
-          userInfoList.push({ userId: userInfo.$key, displayName: userInfo.displayName })
-        })
-    })
-
-    return userInfoList;
   }
 }

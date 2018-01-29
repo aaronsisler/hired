@@ -12,9 +12,9 @@
   <tbody>
     <tr *ngFor="let applicant of filteredPositionApplicants">
       <td>
-        <a [routerLink]="['/applicant/', applicant.userId]">{{ applicant.displayName }}</a>
+        <a [routerLink]="['/applicant/', applicant.applicantId]">{{ applicant.displayName }}</a>
       </td>
-      <td>{{ applicant.userId }}</td>
+      <td>{{ applicant.applicationStatus }}</td>
     </tr>
   </tbody>
 </table>
