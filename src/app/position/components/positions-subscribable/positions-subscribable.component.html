@@ -10,17 +10,15 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Position Id</th>
-      <th>Position Title</th>
+      <th>Job Id</th>
       <th>Location</th>
     </tr>
   </thead>
   <tbody *ngIf="filteredPositions">
     <tr *ngFor="let position of filteredPositions">
       <td>
-        <a [routerLink]="['/position-data/', position.$key, {isAddSub:true}]">{{ position.id }}</a>
+        <a [routerLink]="['/position-data/', position.$key, {isAddSub:true}]">{{ position.jobId }}</a>
       </td>
-      <td>{{ position.title }}</td>
       <td>{{ position.location }}</td>
     </tr>
   </tbody>

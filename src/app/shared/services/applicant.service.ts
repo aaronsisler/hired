@@ -24,4 +24,8 @@ export class ApplicantService {
   getApplicantsForPosition(positionId: string) {
     return this.db.list('/applications/' + positionId);
   }
+
+  getApplicant(applicantId: string){
+    return this.db.object('/applicants/' + applicantId);
+  }
 }

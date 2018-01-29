@@ -5,17 +5,17 @@
 <br />
 <br />
 <ngb-tabset>
+  <ngb-tab title="Applicants">
+    <ng-template ngbTabContent>
+      <app-position-applicants [positionId]="positionId"></app-position-applicants>
+    </ng-template>
+  </ngb-tab>
   <ngb-tab title="Position Details">
     <ng-template ngbTabContent>
       <div *ngIf="position" class="card">
         <app-position-details [position]="position"></app-position-details>
-        <app-position-subscription [userId]="userId" [positionId]="positionId"></app-position-subscription>
+        <app-position-subscription [userId]="userId" [position]="position"></app-position-subscription>
       </div>
-    </ng-template>
-  </ngb-tab>
-  <ngb-tab title="Applicants">
-    <ng-template ngbTabContent>
-      <app-position-applicants [positionId]="positionId"></app-position-applicants>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>

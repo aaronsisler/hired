@@ -10,18 +10,18 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Position Id</th>
+        <th>Job Id</th>
         <th>Subscription Level</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let positionWatched of filteredPositionsWatched">
         <td>
-          <a [routerLink]="['/position-data/', positionWatched.$key]">{{ positionWatched.$key }}</a>
+          <a [routerLink]="['/position-data/', positionWatched.$key]">{{ positionWatched.jobId }}</a>
         </td>
         <td>
           <select #subscriptionLevel="ngModel" [(ngModel)]="positionWatched.subscriptionLevel" name="subscriptionLevel" id="subscriptionLevel"
-            (change)="onSubLevelChange(positionWatched.$key, $event.target.value)" class="form-control" required>
+            (change)="onSubLevelChange(positionWatched.$key, positionWatched.jobId, $event.target.value)" class="form-control" required>
             <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
               {{ subLevel }}
             </option>
