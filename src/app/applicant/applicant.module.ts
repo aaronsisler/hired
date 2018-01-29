@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ApplicantProfileComponent } from './components/applicant-profile/applicant-profile.component';
 import { RouterModule } from '@angular/router';
 import { UserModule } from 'user/user.module';
+import { ApplicantDocumentsComponent } from './components/applicant-documents/applicant-documents.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { UserModule } from 'user/user.module';
     ])
   ],
   exports: [ApplicantProfileComponent],
-  declarations: [ApplicantProfileComponent],
+  declarations: [ApplicantProfileComponent, ApplicantDocumentsComponent],
   providers: []
 })
 export class ApplicantModule { }
