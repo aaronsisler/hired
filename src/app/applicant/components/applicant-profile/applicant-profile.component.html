@@ -4,7 +4,7 @@
 <ngb-tabset>
   <ngb-tab title="Applicant Status">
     <ng-template ngbTabContent>
-      Applicant Status. Will contain Status and Notes
+      <app-applicant-status *ngIf="positionId && applicant" [positionId]="positionId" [applicant]="applicant"></app-applicant-status>
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Applicant Details">

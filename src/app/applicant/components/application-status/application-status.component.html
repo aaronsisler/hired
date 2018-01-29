@@ -1,0 +1,6 @@
+<select #applicationStatus="ngModel" [(ngModel)]="selectedApplicationStatus" name="selectedApplicationStatus" id="selectedApplicationStatus"
+  (change)="onApplicationStatusChange($event.target.value)" class="form-control" required>
+  <option *ngFor="let applicationStatus of applicationStatuses" [value]="applicationStatus">
+    {{ applicationStatus }}
+  </option>
+</select>
