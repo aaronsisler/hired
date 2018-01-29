@@ -11,6 +11,10 @@ export class DocumentService {
     return this.db.list('/documents/' + userId);
   }
 
+  getAllDocumentsForApplicant(applicantId: string){
+    return this.db.list('/applicants/' + applicantId + '/applicationDocuments');
+  }
+
   uploadDocument(userId: string, documentName: string, downloadURL: string) {
     return this.db.list('/documents/' + userId)
       .push(
