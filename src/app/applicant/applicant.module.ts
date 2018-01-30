@@ -8,6 +8,9 @@ import { ApplicantDocumentsComponent } from './components/applicant-documents/ap
 import { ApplicantStatusComponent } from './components/applicant-status/applicant-status.component';
 import { ApplicationStatusComponent } from './components/application-status/application-status.component';
 import { ApplicantNotesComponent } from './components/applicant-notes/applicant-notes.component';
+import { ApplicantNoteUploadComponent } from './components/applicant-note-upload/applicant-note-upload.component';
+import { ApplicantNoteComponent } from './components/applicant-note/applicant-note.component';
+import { ApplicantNoteService } from 'applicant/services/applicant-note.service';
 
 @NgModule({
   imports: [
@@ -19,7 +22,16 @@ import { ApplicantNotesComponent } from './components/applicant-notes/applicant-
     ])
   ],
   exports: [ApplicantProfileComponent],
-  declarations: [ApplicantProfileComponent, ApplicantDocumentsComponent, ApplicantStatusComponent, ApplicationStatusComponent, ApplicantNotesComponent],
-  providers: []
+  declarations:
+    [
+      ApplicantProfileComponent,
+      ApplicantDocumentsComponent,
+      ApplicantStatusComponent,
+      ApplicationStatusComponent,
+      ApplicantNotesComponent,
+      ApplicantNoteUploadComponent,
+      ApplicantNoteComponent
+    ],
+  providers: [ApplicantNoteService]
 })
 export class ApplicantModule { }

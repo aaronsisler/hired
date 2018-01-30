@@ -11,8 +11,8 @@ export class ApplicantService {
 
   async submitApplication(positionId: string, user: AppUser, userDocuments: Document[]) {
     let applicationStatus: string = "APPLIED";
-    let applicant = {user: user, applicationStatus: applicationStatus, applicationDocuments: userDocuments};
-    let result = await this.db.list('/applicants/').push(new Applicant({...applicant}));
+    let applicant = { user: user, applicationStatus: applicationStatus, applicationDocuments: userDocuments };
+    let result = await this.db.list('/applicants/').push(new Applicant({ ...applicant }));
     return this.db.object('/applications/' + positionId + '/' + user.userId)
       .update({ applicantId: result.key, displayName: user.displayName, applicationStatus: applicationStatus })
   }

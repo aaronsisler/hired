@@ -4,7 +4,12 @@
     <div class="form-row">
       <div class="col-4" *ngIf="positionId && applicant">
         <app-application-status [positionId]="positionId" [applicant]="applicant"></app-application-status>
+        <br />
+        <app-applicant-note-upload [applicantId]="applicant.$key"></app-applicant-note-upload>
       </div>
     </div>
+    <br />
+    <h6>Applicant Notes</h6>
+    <app-applicant-notes *ngIf="applicant" [applicantId]="applicant.$key"></app-applicant-notes>
   </div>
 </div>
