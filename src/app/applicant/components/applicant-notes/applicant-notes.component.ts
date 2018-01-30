@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApplicantNoteService } from 'applicant/services/applicant-note.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-applicant-notes',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./applicant-notes.component.css']
 })
 export class ApplicantNotesComponent implements OnInit {
+  @Input('applicantId') applicantId: string;
+  applicantNotes$;
 
-  constructor() { }
+  constructor(private applicantNoteService: ApplicantNoteService) { }
 
   ngOnInit() {
+    this.applicantNotes$ = this.applicantNoteService.getApplicantNotes(this.applicantId);
   }
-
 }

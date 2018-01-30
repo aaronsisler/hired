@@ -1,3 +1,13 @@
-<p>
-  applicant-notes works!
-</p>
+<div *ngIf="applicantNotes$ | async as applicantNotes">
+  <table class="table" *ngIf="applicantNotes.length; else noApplicantNotes">
+    <tr *ngFor="let applicantNote of applicantNotes">
+      <td>
+        <app-applicant-note [applicantNote]="applicantNote"></app-applicant-note>
+      </td>
+    </tr>
+  </table>
+  <ng-template #noApplicantNotes>
+    No Applicant Notes found
+  </ng-template>
+
+</div>
