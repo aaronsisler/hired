@@ -2,9 +2,9 @@
 <br />
 <br />
 <ngb-tabset>
-  <ngb-tab title="Applicant Status">
+  <ngb-tab title="Application Workflow">
     <ng-template ngbTabContent>
-      <app-applicant-status *ngIf="positionId && applicant" [positionId]="positionId" [applicant]="applicant"></app-applicant-status>
+      <app-application-workflow *ngIf="positionId && applicant" [positionId]="positionId" [applicant]="applicant"></app-application-workflow>
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Applicant Details">

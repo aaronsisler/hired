@@ -29,10 +29,10 @@ export class ApplicantService {
     return this.db.object('/applicants/' + applicantId);
   }
 
-  updateApplicationStatus(applicant: Applicant, positionId: string, applicationStatus: string) {
+  updateApplicationStatus(applicant: Applicant, positionId: string) {
     var mergedApplicationStatus = {};
-    mergedApplicationStatus['/applicants/' + applicant.$key + '/applicationStatus/'] = applicationStatus;
-    mergedApplicationStatus['/applications/' + positionId + '/' + applicant.user.userId + '/applicationStatus'] = applicationStatus;
+    mergedApplicationStatus['/applicants/' + applicant.$key + '/applicationStatus/'] = applicant.applicationStatus;
+    mergedApplicationStatus['/applications/' + positionId + '/' + applicant.user.userId + '/applicationStatus'] = applicant.applicationStatus;
 
     var firebaseDatabaseRef = this.db.database.ref('/');
     return firebaseDatabaseRef.update(mergedApplicationStatus);

@@ -14,6 +14,6 @@ export class ApplicantNotesComponent implements OnInit {
   constructor(private applicantNoteService: ApplicantNoteService) { }
 
   ngOnInit() {
-    this.applicantNotes$ = this.applicantNoteService.getApplicantNotes(this.applicantId);
+    this.applicantNotes$ = this.applicantNoteService.getAll(this.applicantId);
   }
 }

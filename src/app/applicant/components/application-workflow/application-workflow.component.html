@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h6>Application Status</h6>
+    <div class="form-row">
+      <div class="col-4">
+        <select #applicationStatus="ngModel" [(ngModel)]="applicant.applicationStatus" name="selectedApplicationStatus" id="selectedApplicationStatus"
+          (change)="onStatusChange()" class="form-control" required>
+          <option *ngFor="let applicationStatus of applicationStatuses" [value]="applicationStatus">
+            {{ applicationStatus }}
+          </option>
+        </select>
+        <br />
+        <textarea [(ngModel)]="noteContent" rows="3" cols="50" [placeholder]="placeHolderText" [readonly]="!canAddNote"></textarea>
+        <button [disabled]="!canAddNote" class="btn btn-primary" (click)="triggerApplicationChange()">Update Application Status</button>
+      </div>
+    </div>
+    <br />
+    <h6>Applicant Notes</h6>
+    <app-applicant-notes *ngIf="applicant" [applicantId]="applicant.$key"></app-applicant-notes>
+  </div>
+</div>
