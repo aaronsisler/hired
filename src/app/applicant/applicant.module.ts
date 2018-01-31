@@ -5,12 +5,11 @@ import { ApplicantProfileComponent } from './components/applicant-profile/applic
 import { RouterModule } from '@angular/router';
 import { UserModule } from 'user/user.module';
 import { ApplicantDocumentsComponent } from './components/applicant-documents/applicant-documents.component';
-import { ApplicantStatusComponent } from './components/applicant-status/applicant-status.component';
-import { ApplicationStatusComponent } from './components/application-status/application-status.component';
 import { ApplicantNotesComponent } from './components/applicant-notes/applicant-notes.component';
-import { ApplicantNoteUploadComponent } from './components/applicant-note-upload/applicant-note-upload.component';
 import { ApplicantNoteComponent } from './components/applicant-note/applicant-note.component';
 import { ApplicantNoteService } from 'applicant/services/applicant-note.service';
+import { ApplicantValidationService } from 'applicant/services/applicant-validation.service';
+import { ApplicationWorkflowComponent } from './components/application-workflow/application-workflow.component';
 
 @NgModule({
   imports: [
@@ -26,12 +25,10 @@ import { ApplicantNoteService } from 'applicant/services/applicant-note.service'
     [
       ApplicantProfileComponent,
       ApplicantDocumentsComponent,
-      ApplicantStatusComponent,
-      ApplicationStatusComponent,
       ApplicantNotesComponent,
-      ApplicantNoteUploadComponent,
-      ApplicantNoteComponent
+      ApplicantNoteComponent,
+      ApplicationWorkflowComponent
     ],
-  providers: [ApplicantNoteService]
+  providers: [ApplicantNoteService, ApplicantValidationService]
 })
 export class ApplicantModule { }
