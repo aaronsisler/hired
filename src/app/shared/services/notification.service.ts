@@ -15,17 +15,17 @@ export class NotificationService {
     return this.db.object('/notifications/' + userId + '/' + notification.$key).update(notification);
   }
 
-  createNotification(userId: string, dateAdded: string, notificationMessage: string, hrefLocation: string) {
+  private createNotification(userId: string, dateAdded: string, notificationMessage: string, hrefLocation: string) {
     let notification: Notification = new Notification(notificationMessage, hrefLocation, dateAdded);
     return this.db.list('/notifications/' + userId).push(notification);
   }
 
-  getFilteredList(positionWatchersList: any[], positionId: string, subLevel: string, notificationMessage: string, hrefLocation: string) {
+  private getFilteredList(positionWatchersList: any[], positionId: string, subLevel: string[], notificationMessage: string, hrefLocation: string) {
     let listOfUserIds = [];
     let dateAdded: string = new Date().toLocaleString();
 
     positionWatchersList.forEach(userRecord => {
-      if (userRecord[positionId] && userRecord[positionId]["subscriptionLevel"] == "ALL") {
+      if (userRecord[positionId] && subLevel.includes(userRecord[positionId]["subscriptionLevel"])) {
         listOfUserIds.push(userRecord.$key)
       }
     });
@@ -34,9 +34,18 @@ export class NotificationService {
   }
 
   async sendNewApplicationNotification(positionId: string) {
-    let subLevel = "ALL";
+    let subLevel = ["ALL"];
     let notificationMessage = "Application for Position " + positionId + " created";
     let hrefLocation = "/position-data/" + positionId;
+    let positionWatchers$ = await this.getPositionWatchers();
+    positionWatchers$.take(1)
+      .subscribe(positionWatchersList => this.getFilteredList(positionWatchersList, positionId, subLevel, notificationMessage, hrefLocation));
+  }
+
+  async sendApplicationStatusChangeNotification(positionId: string, applicantId: string) {
+    let subLevel = ["ALL", "SOME"];
+    let notificationMessage = "Status changed for applicant";
+    let hrefLocation = "/applicant/" + positionId + '/' + applicantId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
       .subscribe(positionWatchersList => this.getFilteredList(positionWatchersList, positionId, subLevel, notificationMessage, hrefLocation));
