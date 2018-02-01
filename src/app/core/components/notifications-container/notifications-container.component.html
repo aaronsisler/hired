@@ -10,6 +10,9 @@
   <div *ngIf="isNotificationPopoutShown" class="notificationsPopOut" (click)="toggleNotificationPopout()">
     <div class="notificationHeader">
       <strong>Notifications</strong>
+      <div class="markNotificationsRead">
+        <div (click)="markAllNotificationsAsRead()">Mark all as read</div>
+      </div>
     </div>
     <div *ngIf="notifications.length; else noNotifications" class="notificationsList">
       <ul>
@@ -19,7 +22,9 @@
       </ul>
     </div>
     <ng-template #noNotifications>
-      <app-notification [notification]="{'message': 'No notifications'}"></app-notification>
+      <div (click)="toggleNotificationPopout()">
+        <app-notification [notification]="{'message': 'No notifications'}"></app-notification>
+      </div>
     </ng-template>
     <div class="notificationFooter"></div>
   </div>

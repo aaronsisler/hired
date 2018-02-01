@@ -5,6 +5,10 @@ import { Notification } from 'shared/models/notification';
 
 @Injectable()
 export class NotificationService {
+  newApplicationSubLevel: string[] = ["ALL"];
+  applicantStatusUpdateSubLevel: string[] = ["ALL", "SOME"];
+  newApplicationMessage = "Application received for Position: ";
+  applicationStatusChangeMessage = "Applicant status changed for Position: ";
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -16,26 +20,36 @@ export class NotificationService {
     return this.db.object('/notifications/' + userId + '/' + notification.$key).update(notification);
   }
 
+  async markAllNotificationsAsReviewed(userId: string) {
+    let userNotifications$ = await this.getNotificationsForUser(userId);
+    userNotifications$.take(1)
+      .subscribe(userNotifications => {
+        userNotifications.forEach(userNotification => {
+          userNotification.hasBeenViewed = true;
+          this.markNotificationAsReviewed(userId, userNotification)
+        })
+      })
+  }
+
   async sendNewApplicationNotification(positionId: string) {
-    let subLevel = ["ALL"];
-    let notificationMessage = "Application received for Position: ";
     let hrefLocation = "/position-data/" + positionId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
       .subscribe(positionWatchersList => {
-        let filteredList = this.getFilteredList(positionWatchersList, positionId, subLevel, notificationMessage, hrefLocation);
+        let filteredList = this.getFilteredList(positionWatchersList, positionId,
+          this.newApplicationSubLevel, this.newApplicationMessage, hrefLocation);
         this.createNotificationsFromFilteredList(filteredList);
       });
   }
 
   async sendApplicationStatusChangeNotification(positionId: string, applicantId: string) {
-    let subLevel = ["ALL", "SOME"];
     let notificationMessage = "Applicant status changed for Position: ";
     let hrefLocation = "/applicant/" + positionId + '/' + applicantId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
       .subscribe(positionWatchersList => {
-        let filteredList = this.getFilteredList(positionWatchersList, positionId, subLevel, notificationMessage, hrefLocation)
+        let filteredList = this.getFilteredList(positionWatchersList, positionId,
+          this.applicantStatusUpdateSubLevel, this.applicationStatusChangeMessage, hrefLocation)
         this.createNotificationsFromFilteredList(filteredList);
       });
   }

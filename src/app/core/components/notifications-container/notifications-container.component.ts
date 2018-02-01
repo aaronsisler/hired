@@ -31,6 +31,10 @@ export class NotificationsContainerComponent implements OnInit, OnDestroy {
     this.isNotificationPopoutShown = !this.isNotificationPopoutShown;
   }
 
+  markAllNotificationsAsRead(){
+    this.notificationService.markAllNotificationsAsReviewed(this.userId);
+  }
+
   ngOnDestroy(){
     this.notificationSubscription.unsubscribe();
   }
