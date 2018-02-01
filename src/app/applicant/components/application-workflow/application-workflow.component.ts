@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApplicantNoteService } from 'applicant/services/applicant-note.service';
 import { ApplicantService } from 'shared/services/applicant.service';
 import { ApplicantValidationService } from 'applicant/services/applicant-validation.service';
+import { NotificationService } from 'shared/services/notification.service';
 
 @Component({
   selector: 'app-application-workflow',
@@ -12,7 +13,7 @@ import { ApplicantValidationService } from 'applicant/services/applicant-validat
 export class ApplicationWorkflowComponent implements OnInit {
   @Input('applicant') applicant: Applicant;
   @Input('positionId') positionId: string;
-  applicationStatuses: string[] = ["APPLIED", "INTERVIEW", "ONSITE", "OFFER_MADE", "ACCEPTED", "DECLINED"];
+  applicationStatuses: string[];
   previousStatus: string;
   placeHolderText: string = "Change application status to add a note";
   noteContent: string;
@@ -21,10 +22,12 @@ export class ApplicationWorkflowComponent implements OnInit {
 
   constructor(private applicantNoteService: ApplicantNoteService,
     private applicantService: ApplicantService,
+    private notificationService: NotificationService,
     private applicantValidationService: ApplicantValidationService) { }
 
   ngOnInit() {
     this.previousStatus = this.applicant.applicationStatus;
+    this.applicationStatuses = this.applicantValidationService.validApplicationStatuses;
     const indexOfPreviousStatus = this.applicationStatuses.indexOf(this.previousStatus)
     this.applicationStatuses = this.applicationStatuses.slice(indexOfPreviousStatus);
   }
@@ -43,6 +46,7 @@ export class ApplicationWorkflowComponent implements OnInit {
     this.applicantService.updateApplicationStatus(this.applicant, this.positionId);
     this.previousStatus = this.applicant.applicationStatus;
     this.canAddNote = false;
+    this.notificationService.sendApplicationStatusChangeNotification(this.positionId, this.applicant.$key);
   }
 
   canNoteBeAdded(isValidStatusChange: boolean) {

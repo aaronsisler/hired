@@ -15,6 +15,7 @@ export class NotificationComponent {
   constructor(private notificationService: NotificationService, private router: Router) { }
 
   markNotificationViewed() {
+    if (!this.userId) { return; }
     this.notification.hasBeenViewed = !this.notification.hasBeenViewed;
     this.notificationService.markNotificationAsReviewed(this.userId, this.notification);
 
