@@ -6,23 +6,23 @@ export class PositionService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  create(position){
+  create(position) {
     return this.db.list('/positions').push(position);
   }
 
-  getAll(){
+  getAll() {
     return this.db.list('/positions');
   }
 
-  get(postionId){
+  get(postionId) {
     return this.db.object('/positions/' + postionId);
   }
 
-  update(postionId, position){
+  update(postionId, position) {
     return this.db.object('/positions/' + postionId).update(position);
   }
 
-  delete(postionId){
+  delete(postionId) {
     return this.db.object('/positions/' + postionId).remove();
   }
 }
