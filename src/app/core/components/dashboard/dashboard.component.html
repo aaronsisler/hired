@@ -1,9 +1,8 @@
+<button (click)="navigateToSubscribablePositions()" class="btn btn-primary">Watch New Position</button>
+<br />
+<br />
 <div *ngIf="positionsWatched">
-  <div>
-    <h4>Watched Positions</h4>
-    <button (click)="navigateToSubscribablePositions()" class="btn btn-primary">Watch New Position</button>
-  </div>
-  <br />
+  <h4>Watched Positions</h4>
   <p>
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
   </p>
@@ -21,7 +20,8 @@
         </td>
         <td>
           <select #subscriptionLevel="ngModel" [(ngModel)]="positionWatched.subscriptionLevel" name="subscriptionLevel" id="subscriptionLevel"
-            (change)="onSubLevelChange(positionWatched.$key, positionWatched.positionId, $event.target.value)" class="form-control" required>
+            (change)="onSubLevelChange(positionWatched.$key, positionWatched.positionId, $event.target.value)" class="form-control"
+            required>
             <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
               {{ subLevel }}
             </option>

@@ -1,3 +1,25 @@
-<p>
-  positioncreate works!
-</p>
+<h4>Create Position</h4>
+<div class="card">
+  <div class="card-body">
+    <div class="form-group col-md-6">
+      <h6>Position Title</h6>
+      <input #title="ngModel" [(ngModel)]="position.title" name="title" type="text" class="form-control" placeholder="What applicants will see">
+    </div>
+    <div class="form-group col-md-6">
+      <h6>Position Id</h6>
+      <input #positionId="ngModel" [(ngModel)]="position.positionId" name="positionId" type="text" class="form-control" placeholder="Position Id must be unique in system">
+    </div>
+    <div class="form-group col-md-6">
+      <h6>Location</h6>
+      <input #location="ngModel" [(ngModel)]="position.location" name="location" type="text" class="form-control" placeholder="Position Location ex. Raleigh, NC">
+    </div>
+    <div class="form-group col-md-12">
+      <h6>Description</h6>
+      <textarea #description="ngModel" [(ngModel)]="position.description" name="description" rows="10" cols="100" class="form-control"
+        placeholder="Description"></textarea>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" (click)="create()">Submit Position</button>
+    </div>
+  </div>
+</div>
