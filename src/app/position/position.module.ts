@@ -16,6 +16,7 @@ import { PositionSubscriptionComponent } from './components/position-subscriptio
 import { PositionDetailsComponent } from './components/position-details/position-details.component';
 import { PositionApplicantsComponent } from './components/position-applicants/position-applicants.component';
 import { ApplicantModule } from 'applicant/applicant.module';
+import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 
 @NgModule({
   imports: [
@@ -23,11 +24,11 @@ import { ApplicantModule } from 'applicant/applicant.module';
     UserModule,
     ApplicantModule,
     RouterModule.forChild([
-      { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard] },
       { path: 'position/:id', component: PositionExternalViewComponent },
-      { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard] },
-      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard] },
-      { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard] }
+      { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard] },
+      { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
+      { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
+      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] }
     ])
   ],
   exports: [

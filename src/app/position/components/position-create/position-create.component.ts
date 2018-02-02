@@ -30,6 +30,7 @@ export class PositionCreateComponent implements OnInit, OnDestroy {
     }
     this.isCreateDisabled = this.positionIds.includes(positionId);
     if (this.isCreateDisabled) {
+      //Used to delay the error showing if there isn't actually an error //refactor
       this.showError = true;
       return
     }

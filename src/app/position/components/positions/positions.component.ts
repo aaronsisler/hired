@@ -1,3 +1,5 @@
+import { AppUser } from 'shared/models/app-user';
+import { AuthService } from 'shared/services/auth.service';
 import { PositionService } from 'shared/services/position.service';
 import { Component, OnDestroy } from '@angular/core';
 import { Position } from 'shared/models/position';
@@ -12,8 +14,11 @@ export class PositionsComponent implements OnDestroy {
   positions: Position[];
   filteredPositions: any[];
   positionSubscription: Subscription;
+  authSubscription: Subscription;
+  appUser: AppUser;
 
-  constructor(private positionService: PositionService) {
+  constructor(private authService: AuthService, private positionService: PositionService) {
+    this.authSubscription = this.authService.appUser$.subscribe(appUser => this.appUser = appUser);
     this.positionSubscription = this.positionService.getAll()
       .subscribe(positions => this.filteredPositions = this.positions = positions);
   }
@@ -26,5 +31,6 @@ export class PositionsComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.positionSubscription.unsubscribe();
+    this.authSubscription.unsubscribe();
   }
 }

@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { ApplicantService } from 'shared/services/applicant.service';
+import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
+import { AdminAuthGuardService } from 'shared/services/admin-auth-guard.service';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { ApplicantService } from 'shared/services/applicant.service';
   providers: [
     AuthService,
     AuthGuard,
+    EmployeeAuthGuardService,
+    AdminAuthGuardService,
     UserService,
     ApplicantService,
     NotificationService

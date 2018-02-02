@@ -1,6 +1,8 @@
-<button routerLink="/position-create" class="btn btn-primary">Create Position</button>
-<br />
-<br />
+<div *ngIf="appUser && appUser.isEmployee">
+  <button routerLink="/position-create" class="btn btn-primary">Create Position</button>
+  <br />
+  <br />
+</div>
 <h3>Open Positions</h3>
 <p>
   <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">

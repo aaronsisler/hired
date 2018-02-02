@@ -1,3 +1,4 @@
+import { AuthGuard } from 'shared/services/auth-guard.service';
 import { SharedModule } from 'shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,7 @@ import { ApplicantNoteComponent } from './components/applicant-note/applicant-no
 import { ApplicantNoteService } from 'applicant/services/applicant-note.service';
 import { ApplicantValidationService } from 'applicant/services/applicant-validation.service';
 import { ApplicationWorkflowComponent } from './components/application-workflow/application-workflow.component';
+import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 
 @NgModule({
   imports: [
@@ -17,7 +19,7 @@ import { ApplicationWorkflowComponent } from './components/application-workflow/
     SharedModule,
     UserModule,
     RouterModule.forChild([
-      { path: 'applicant/:positionId/:applicantId', component: ApplicantProfileComponent },
+      { path: 'applicant/:positionId/:applicantId', component: ApplicantProfileComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
     ])
   ],
   exports: [ApplicantProfileComponent],
