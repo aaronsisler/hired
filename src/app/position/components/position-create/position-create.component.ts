@@ -10,10 +10,16 @@ import { Position } from 'shared/models/position';
 })
 export class PositionCreateComponent implements OnInit {
   position = {};
+  canCreate: boolean;
 
   constructor(private positionService: PositionService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  async isPositionIdUnique(positionId) {
+    let result = await this.positionService.checkPositionIdUniqueness(positionId);
+    result.subscribe(positionIdExists => { console.log("PositionId", positionIdExists), this.canCreate = positionIdExists });
   }
 
   create() {

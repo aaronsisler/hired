@@ -7,7 +7,7 @@
     </div>
     <div class="form-group col-md-6">
       <h6>Position Id</h6>
-      <input #positionId="ngModel" [(ngModel)]="position.positionId" name="positionId" type="text" class="form-control" placeholder="Position Id must be unique in system">
+      <input (keyup)="isPositionIdUnique(position.positionId)" #positionId="ngModel" [(ngModel)]="position.positionId" name="positionId" type="text" class="form-control" placeholder="Position Id must be unique in system">
     </div>
     <div class="form-group col-md-6">
       <h6>Location</h6>
@@ -19,7 +19,7 @@
         placeholder="Description"></textarea>
     </div>
     <div class="col-md-6">
-      <button class="btn btn-primary" (click)="create()">Submit Position</button>
+      <button [disabled]="canCreate" class="btn btn-primary" (click)="create(position)">Submit Position</button>
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -18,11 +19,17 @@ export class PositionService {
     return this.db.object('/positions/' + postionId);
   }
 
-  update(postionId, position) {
-    return this.db.object('/positions/' + postionId).update(position);
+  checkPositionIdUniqueness(positionId: string): Observable<boolean> {
+    let positionIds: string[] = [];
+    return this.getAll().map(positions => {
+      let positionIds = this.getPositionIdList(positions);
+      return positionIds.includes(positionId);
+    });
   }
 
-  delete(postionId) {
-    return this.db.object('/positions/' + postionId).remove();
+  private getPositionIdList(positions: any[]) {
+    let positionIds: string[] = [];
+    positions.forEach(position => positionIds.push(position.positionId));
+    return positionIds;
   }
 }
