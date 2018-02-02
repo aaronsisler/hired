@@ -3,23 +3,37 @@
   <div class="card-body">
     <div class="form-group col-md-6">
       <h6>Position Title</h6>
-      <input #title="ngModel" [(ngModel)]="position.title" name="title" type="text" class="form-control" placeholder="What applicants will see">
+      <input #title="ngModel" [(ngModel)]="position.title" name="title" type="text" class="form-control" placeholder="What applicants will see"
+        required>
+      <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+        <div *ngIf="title.errors.required">Title is required</div>
+      </div>
     </div>
     <div class="form-group col-md-6">
       <h6>Position Id</h6>
-      <input #positionId="ngModel" [(ngModel)]="position.positionId" name="positionId" type="text" class="form-control" placeholder="Position Id must be unique in system">
+      <input (keyup)="isPositionIdUnique(position.positionId)" #positionId="ngModel" [(ngModel)]="position.positionId" name="positionId"
+        type="text" class="form-control" placeholder="Position Id must be unique in system" required>
+      <div class="alert alert-danger" *ngIf="positionId.touched && positionId.invalid && positionId.errors.required">Position Id is required</div>
+      <div class="alert alert-danger" *ngIf="positionId.touched && showError && position.positionId">Position Id is already in use</div>
     </div>
     <div class="form-group col-md-6">
       <h6>Location</h6>
-      <input #location="ngModel" [(ngModel)]="position.location" name="location" type="text" class="form-control" placeholder="Position Location ex. Raleigh, NC">
+      <input #location="ngModel" [(ngModel)]="position.location" id="location" name="location" type="text" class="form-control"
+        placeholder="Location ex. Raleigh, NC" required>
+      <div class="alert alert-danger" *ngIf="location.touched && location.invalid">
+        <div *ngIf="location.errors.required">Location is required</div>
+      </div>
     </div>
     <div class="form-group col-md-12">
       <h6>Description</h6>
       <textarea #description="ngModel" [(ngModel)]="position.description" name="description" rows="10" cols="100" class="form-control"
-        placeholder="Description"></textarea>
+        placeholder="Description" required></textarea>
+      <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+        <div *ngIf="description.errors.required">Description is required</div>
+      </div>
     </div>
     <div class="col-md-6">
-      <button class="btn btn-primary" (click)="create()">Submit Position</button>
+      <button [disabled]="isCreateDisabled || title.errors || location.errors || description.errors" class="btn btn-primary">Submit Position</button>
     </div>
   </div>
 </div>
