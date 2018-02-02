@@ -19,17 +19,12 @@ export class PositionService {
     return this.db.object('/positions/' + postionId);
   }
 
-  checkPositionIdUniqueness(positionId: string): Observable<boolean> {
+  getAllPositionIds(): Observable<string[]> {
     let positionIds: string[] = [];
     return this.getAll().map(positions => {
-      let positionIds = this.getPositionIdList(positions);
-      return positionIds.includes(positionId);
+      positionIds = [];
+      positions.forEach(position => positionIds.push(position.positionId))
+      return positionIds;
     });
-  }
-
-  private getPositionIdList(positions: any[]) {
-    let positionIds: string[] = [];
-    positions.forEach(position => positionIds.push(position.positionId));
-    return positionIds;
   }
 }
