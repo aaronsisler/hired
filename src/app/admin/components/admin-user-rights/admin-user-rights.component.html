@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <div class="col-2" style="text-align: right">
+      <h6>
+        <span class="checkbox-inline">Employee:
+          <input #isEmployee="ngModel" [(ngModel)]="user.isEmployee" (change)="toggleIsEmployee()" [checked]="user.isEmployee" name="isEmployee"
+            type="checkbox" id="isEmployee">
+        </span>
+      </h6>
+    </div>
+    <br />
+    <div class="col-2" style="text-align: right">
+      <h6>
+        <span class="checkbox-inline">Admin:
+          <input #isAdmin="ngModel" [(ngModel)]="user.isAdmin" (change)="toggleIsAdmin()" [checked]="user.isAdmin" name="isAdmin" type="checkbox"
+            id="isAdmin">
+        </span>
+      </h6>
+    </div>
+  </div>
+</div>

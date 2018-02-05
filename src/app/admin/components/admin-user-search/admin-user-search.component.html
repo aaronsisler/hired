@@ -1,10 +1,14 @@
 <p>
-  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search on Display Name...">
 </p>
 <table class="table">
   <thead>
     <tr>
-      <th>User</th>
+      <th>Display Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Employee</th>
+      <th>Admin</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +16,10 @@
       <td>
         <a [routerLink]="['/admin-user-details/', user.$key]">{{ user.displayName }}</a>
       </td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.isEmployee ? 'Yes': 'No'}}</td>
+      <td>{{user.isAdmin ? 'Yes': 'No'}}</td>
     </tr>
   </tbody>
 </table>

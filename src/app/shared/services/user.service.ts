@@ -16,7 +16,7 @@ export class UserService {
     return this.db.list('/users');
   }
 
-  update(userId, userContactInfo){
-    return this.db.object('/users/' + userId).update(userContactInfo);
+  update(userId, user: AppUser){
+    return this.db.object('/users/' + userId).update(user);
   }
 }

@@ -1,3 +1,14 @@
-<p>
-  admin-user-details works!
-</p>
+<div *ngIf="user">
+  <ngb-tabset>
+    <ngb-tab title="User Profile">
+      <ng-template ngbTabContent>
+        <app-user-profile [userId]="userId"></app-user-profile>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Access Rights">
+      <ng-template ngbTabContent>
+        <app-admin-user-rights [user]="user"></app-admin-user-rights>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
