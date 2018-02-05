@@ -1,0 +1,17 @@
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers">
+      <td>
+        <a [routerLink]="['/admin-user-details/', user.$key]">{{ user.displayName }}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
