@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NotificationService } from './services/notification.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,13 +13,17 @@ import { DocumentUploadComponent } from './components/document-upload/document-u
 import { ApplicantService } from 'shared/services/applicant.service';
 import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 import { AdminAuthGuardService } from 'shared/services/admin-auth-guard.service';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     CustomFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forChild([
+      { path: 'unauthorized', component: UnauthorizedComponent }
+    ])
   ],
   exports: [
     CommonModule,
@@ -36,6 +41,6 @@ import { AdminAuthGuardService } from 'shared/services/admin-auth-guard.service'
     ApplicantService,
     NotificationService
   ],
-  declarations: [DocumentsComponent, DocumentUploadComponent]
+  declarations: [DocumentsComponent, DocumentUploadComponent, UnauthorizedComponent]
 })
 export class SharedModule { }

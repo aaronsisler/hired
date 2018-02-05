@@ -1,3 +1,4 @@
+import { AdminAuthGuardService } from 'shared/services/admin-auth-guard.service';
 import { UserService } from 'shared/services/user.service';
 import { SharedModule } from 'shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { DocumentService } from 'shared/services/document.service';
 import { UserComponent } from './components/user/user.component';
+
 @NgModule({
   imports: [
     SharedModule,

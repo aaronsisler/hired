@@ -17,6 +17,9 @@
     ],
     "baseUrl": "./src",
     "paths": {
+      "admin/*": [
+        "app/admin/*"
+      ],
       "applicant/*": [
         "app/applicant/*"
       ],

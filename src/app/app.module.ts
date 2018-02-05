@@ -15,6 +15,7 @@ import { environment } from './../environments/environment';
 
 
 import { AppComponent } from './app.component';
+import { AdminModule } from 'app/admin/admin.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AppComponent } from './app.component';
     SharedModule,
     PositionModule,
     UserModule,
+    AdminModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
