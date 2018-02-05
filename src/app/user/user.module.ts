@@ -33,6 +33,7 @@ import { UserComponent } from './components/user/user.component';
     UserNameComponent,
     UserContactComponent,
     UserAddressComponent,
+    UserProfileComponent,
     UserComponent
   ],
   providers: [
