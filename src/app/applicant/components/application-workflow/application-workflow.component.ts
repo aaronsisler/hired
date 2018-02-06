@@ -27,13 +27,12 @@ export class ApplicationWorkflowComponent implements OnInit {
 
   ngOnInit() {
     this.previousStatus = this.applicant.applicationStatus;
-    this.applicationStatuses = this.applicantValidationService.validApplicationStatuses;
-    const indexOfPreviousStatus = this.applicationStatuses.indexOf(this.previousStatus)
-    this.applicationStatuses = this.applicationStatuses.slice(indexOfPreviousStatus);
+    this.applicationStatuses = this.applicantValidationService.getValidStatuses(this.previousStatus);
   }
 
   onStatusChange() {
-    let isValidStatusChange = this.applicantValidationService.validateApplicationStatusChange(this.previousStatus, this.applicant.applicationStatus);
+    let isValidStatusChange = this.applicantValidationService
+      .validateApplicationStatusChange(this.previousStatus, this.applicant.applicationStatus);
     this.canNoteBeAdded(isValidStatusChange);
   }
 
