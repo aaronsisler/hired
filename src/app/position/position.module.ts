@@ -17,6 +17,7 @@ import { PositionDetailsComponent } from './components/position-details/position
 import { PositionApplicantsComponent } from './components/position-applicants/position-applicants.component';
 import { ApplicantModule } from 'applicant/applicant.module';
 import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
+import { PositionOwnerComponent } from './components/position-owner/position-owner.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.se
     PositionApplyReviewComponent,
     PositionSubscriptionComponent,
     PositionDetailsComponent,
-    PositionApplicantsComponent
+    PositionApplicantsComponent,
+    PositionOwnerComponent
   ]
 })
 export class PositionModule { }

@@ -4,4 +4,5 @@ export interface Position {
     positionId: string;
     location: string;
     description: string;
+    positionOwnerId: string;
 }
