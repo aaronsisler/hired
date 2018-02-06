@@ -18,11 +18,11 @@ export class PositionOwnerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userSubscription = this.userService.get(this.position.positionOwnerId)
+    this.userSubscription = this.userService.get(this.position.ownerId)
       .subscribe(user => this.user = user);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
 }

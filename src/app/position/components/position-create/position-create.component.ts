@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class PositionCreateComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   positionSubscription: Subscription;
-  position = {};
+  position = { status: "OPEN" };
   isCreateDisabled: boolean = true;
   positionIds: string[];
   showError: boolean;
@@ -24,7 +24,7 @@ export class PositionCreateComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
-    this.userSubscription = this.authService.user$.subscribe(user => this.position["positionOwnerId"] = user.uid);
+    this.userSubscription = this.authService.user$.subscribe(user => this.position["ownerId"] = user.uid);
     this.positionSubscription = this.positionService.getAllPositionIds()
       .subscribe(positionIdList => this.positionIds = positionIdList)
   }

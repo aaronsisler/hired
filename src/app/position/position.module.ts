@@ -18,6 +18,9 @@ import { PositionApplicantsComponent } from './components/position-applicants/po
 import { ApplicantModule } from 'applicant/applicant.module';
 import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 import { PositionOwnerComponent } from './components/position-owner/position-owner.component';
+import { PositionWorkflowComponent } from './components/position-workflow/position-workflow.component';
+import { PositionStatusComponent } from './components/position-status/position-status.component';
+import { PositionValidationComponent } from './services/position-validation/position-validation.component';
 
 @NgModule({
   imports: [
@@ -37,7 +40,8 @@ import { PositionOwnerComponent } from './components/position-owner/position-own
   ],
   providers: [
     PositionService,
-    PositionWatcherService
+    PositionWatcherService,
+    PositionValidationComponent
   ],
   declarations: [
     PositionsComponent,
@@ -50,7 +54,10 @@ import { PositionOwnerComponent } from './components/position-owner/position-own
     PositionSubscriptionComponent,
     PositionDetailsComponent,
     PositionApplicantsComponent,
-    PositionOwnerComponent
+    PositionOwnerComponent,
+    PositionWorkflowComponent,
+    PositionStatusComponent,
+    PositionValidationComponent
   ]
 })
 export class PositionModule { }
