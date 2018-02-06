@@ -1,3 +1,4 @@
+import { AuthService } from 'shared/services/auth.service';
 import { Router } from '@angular/router';
 import { PositionService } from 'shared/services/position.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -10,16 +11,21 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./position-create.component.css']
 })
 export class PositionCreateComponent implements OnInit, OnDestroy {
-  position = {};
+  userSubscription: Subscription;
+  positionSubscription: Subscription;
+  position = { status: "OPEN" };
   isCreateDisabled: boolean = true;
   positionIds: string[];
-  positionSub: Subscription
   showError: boolean;
 
-  constructor(private positionService: PositionService, private router: Router) { }
+  constructor(
+    private positionService: PositionService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.positionSub = this.positionService.getAllPositionIds()
+    this.userSubscription = this.authService.user$.subscribe(user => this.position["ownerId"] = user.uid);
+    this.positionSubscription = this.positionService.getAllPositionIds()
       .subscribe(positionIdList => this.positionIds = positionIdList)
   }
 
@@ -43,6 +49,7 @@ export class PositionCreateComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.positionSub.unsubscribe();
+    this.userSubscription.unsubscribe();
+    this.positionSubscription.unsubscribe();
   }
 }

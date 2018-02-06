@@ -10,12 +10,23 @@
       <app-position-applicants [positionId]="positionId"></app-position-applicants>
     </ng-template>
   </ngb-tab>
+  <ngb-tab title="Position Workflow">
+    <ng-template ngbTabContent>
+      <app-position-workflow [position]="position"></app-position-workflow>
+    </ng-template>
+  </ngb-tab>
   <ngb-tab title="Position Details">
     <ng-template ngbTabContent>
       <div *ngIf="position" class="card">
         <app-position-details [position]="position"></app-position-details>
+        <br />
         <app-position-subscription [userId]="userId" [position]="position"></app-position-subscription>
       </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Position Owner">
+    <ng-template ngbTabContent>
+      <app-position-owner [position]="position"></app-position-owner>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>

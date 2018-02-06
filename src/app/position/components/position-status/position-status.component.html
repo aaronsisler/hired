@@ -1,0 +1,11 @@
+<div class="form-row">
+  <div class="col-4">
+    <select #status="ngModel" [(ngModel)]="position.status" name="selectedStatus" id="selectedStatus" class="form-control" required>
+      <option *ngFor="let status of statusLevels" [value]="status">
+        {{ status }}
+      </option>
+    </select>
+    <br />
+    <button class="btn btn-primary" (click)="updateStatus(selectedStatus)">Update Status</button>
+  </div>
+</div>

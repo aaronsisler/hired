@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Position } from 'shared/models/position';
 
 @Injectable()
 export class PositionService {
@@ -26,5 +27,9 @@ export class PositionService {
       positions.forEach(position => positionIds.push(position.positionId))
       return positionIds;
     });
+  }
+
+  update(position: Position) {
+    return this.db.object('/positions/' + position.$key).update(position);
   }
 }
