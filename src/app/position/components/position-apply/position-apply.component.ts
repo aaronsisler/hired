@@ -53,7 +53,7 @@ export class PositionApplyComponent implements OnInit, OnDestroy {
   async submitApplication() {
     this.applicantService.submitApplication(this.positionId, this.user, this.documentsSelected)
     this.notificationService.sendNewApplicationNotification(this.positionId);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/position-apply-success');
   }
 
   updateView(viewToBeShown: string) {

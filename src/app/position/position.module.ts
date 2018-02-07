@@ -21,6 +21,7 @@ import { PositionOwnerComponent } from './components/position-owner/position-own
 import { PositionWorkflowComponent } from './components/position-workflow/position-workflow.component';
 import { PositionStatusComponent } from './components/position-status/position-status.component';
 import { PositionValidationComponent } from './services/position-validation/position-validation.component';
+import { PositionApplySuccessComponent } from './components/position-apply-success/position-apply-success.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PositionValidationComponent } from './services/position-validation/posi
       { path: 'position-apply/:id', component: PositionApplyComponent, canActivate: [AuthGuard] },
       { path: 'position-create', component: PositionCreateComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
       { path: 'position-data/:id', component: PositionInternalViewComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
-      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] }
+      { path: 'positions-subscribable', component: PositionsSubscribableComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
+      { path: 'position-apply-success', component: PositionApplySuccessComponent, canActivate: [AuthGuard] }
     ])
   ],
   exports: [
@@ -57,7 +59,8 @@ import { PositionValidationComponent } from './services/position-validation/posi
     PositionOwnerComponent,
     PositionWorkflowComponent,
     PositionStatusComponent,
-    PositionValidationComponent
+    PositionValidationComponent,
+    PositionApplySuccessComponent
   ]
 })
 export class PositionModule { }
