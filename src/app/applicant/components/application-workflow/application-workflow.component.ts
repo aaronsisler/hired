@@ -44,6 +44,7 @@ export class ApplicationWorkflowComponent implements OnInit {
     this.applicantNoteService.create(this.applicant.$key, noteContent);
     this.applicantService.updateApplicationStatus(this.applicant, this.positionId);
     this.previousStatus = this.applicant.applicationStatus;
+    this.applicationStatuses = this.applicantValidationService.getValidStatuses(this.previousStatus);
     this.canAddNote = false;
     this.notificationService.sendApplicationStatusChangeNotification(this.positionId, this.applicant.$key);
   }
