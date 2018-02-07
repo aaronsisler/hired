@@ -1,4 +1,9 @@
-<p *ngIf="isRedirect">
-  <strong>You must be logged in to view this page</strong>
-</p>
-<button (click)='login()' class="btn btn-primary">Login with Google</button>
+<div class="card">
+  <div class="card-body">
+    <h4>Login</h4>
+    <p *ngIf="isRedirect">
+      <strong>You must be logged in to view this page</strong>
+    </p>
+    <button (click)='login()' class="btn btn-primary">Login with Google</button>
+  </div>
+</div>

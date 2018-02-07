@@ -1,21 +1,25 @@
-<br />
-<p>
-  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
-</p>
+<div class="card">
+  <div class="card-body">
+    <br />
+    <p>
+      <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+    </p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Applicant Name</th>
-      <th>Applicant Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let applicant of filteredPositionApplicants">
-      <td>
-        <a [routerLink]="['/applicant/', positionId, applicant.applicantId]">{{ applicant.displayName }}</a>
-      </td>
-      <td>{{ applicant.applicationStatus }}</td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Applicant Name</th>
+          <th>Applicant Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let applicant of filteredPositionApplicants">
+          <td>
+            <a [routerLink]="['/applicant/', positionId, applicant.applicantId]">{{ applicant.displayName }}</a>
+          </td>
+          <td>{{ applicant.applicationStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
