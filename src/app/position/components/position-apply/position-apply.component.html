@@ -1,6 +1,3 @@
-<button type="button" [routerLink]="['/position/', positionId]" class="btn btn-secondary">Back to Position</button>
-<br />
-<br />
 <h4>Apply for Position</h4>
 <div *ngIf="isUserInfo">
   <app-user [user]="user"></app-user>
@@ -13,7 +10,7 @@
         </div>
       </ng-template>
       <button *ngIf="!doesApplicationExist; else applicationExists" (click)="updateView('DOCUMENTS')" class="btn btn-primary">Save and Continue</button>
-
+      <button type="button" [routerLink]="['/position/', positionId]" class="btn btn-secondary">Back to Position</button>
     </div>
   </div>
 </div>
@@ -21,7 +18,7 @@
   <div class="col-md-9">
     <app-document-upload [userId]="userId"></app-document-upload>
     <br />
-    <app-documents (documentsOutput)="documentSelectorTriggered($event)" [documentsSelected]="documentsSelected" [userId]="userId"></app-documents>
+    <app-documents [userId]="userId" [isPositionApply]="true" (documentsOutput)="documentSelectorTriggered($event)" [documentsSelected]="documentsSelected"></app-documents>
     <br />
     <button (click)="updateView('FINAL_REVIEW')" class="btn btn-primary">Save and Continue</button>
     <button (click)="updateView('USER_INFO')" class="btn btn-secondary">Back to User Info</button>
