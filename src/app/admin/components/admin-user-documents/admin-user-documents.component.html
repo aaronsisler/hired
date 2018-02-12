@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <button [disabled]="documentsSelected.length == 0" class="btn btn-danger" (click)="deleteSelectedDocuments()">Delete Documents</button>
+    <br />
+    <br />
+    <div>
+      <strong>{{documentsSelected.length}}
+        <span *ngIf="documentsSelected.length !=1; else oneDocument">Documents</span>
+        <ng-template #oneDocument>Document</ng-template>
+        to be deleted
+      </strong>
+    </div>
+  </div>
+</div>
+<br />
+<app-documents [userId]="userId" [isAdmin]="true" [documentsSelected]="documentsSelected" (documentsOutput)="documentSelectorTriggered($event)"></app-documents>

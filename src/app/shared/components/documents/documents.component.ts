@@ -13,16 +13,16 @@ import { Observable } from 'rxjs/Observable';
 })
 export class DocumentsComponent implements OnInit {
   @Input('userId') userId: string;
-  @Input('documentsSelected') documentsSelected: Document[];
+  @Input('documentsSelected') documentsSelected: Document[] = [];
+  @Input('isPositionApply') isPositionApply: boolean = false;
+  @Input('isAdmin') isAdmin: boolean = false;
   @Output('documentsOutput') documentsOutput: EventEmitter<Document[]> = new EventEmitter<Document[]>();
-  isPositionApply: boolean;
   documents$;
 
   constructor(private documentService: DocumentService) {
   }
 
   async ngOnInit() {
-    this.isCheckboxColumnEnabled();
     this.documents$ = await this.documentService.getAllDocumentsForUser(this.userId);
   }
 

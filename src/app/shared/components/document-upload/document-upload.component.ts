@@ -1,7 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { DocumentService } from 'shared/services/document.service';
-import * as firebase from 'firebase/app';
-import 'firebase/storage';
 
 @Component({
   selector: 'app-document-upload',
@@ -15,17 +13,12 @@ export class DocumentUploadComponent {
 
   constructor(private documentService: DocumentService) { }
 
-  fileChange(event){
+  fileChange(event) {
     this.file = event.target.files[0];
   }
 
   async uploadDocument() {
-    let downloadURL: string;
-    let storageRef = firebase.storage().ref(this.userId + "/" + this.file.name);
-    await storageRef.put(this.file);
-    await storageRef.getDownloadURL().then(url=> downloadURL = url);
-    this.documentService.uploadDocument(this.userId, this.file.name, downloadURL);
+    this.documentService.uploadDocument(this.userId, this.file);
     this.fileNameVariable.nativeElement.value = "";
   }
-
 }

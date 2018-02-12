@@ -9,6 +9,7 @@ import { AdminUserDetailsComponent } from './components/admin-user-details/admin
 import { AdminAuthGuardService } from 'shared/services/admin-auth-guard.service';
 import { UserModule } from 'user/user.module';
 import { AdminUserRightsComponent } from './components/admin-user-rights/admin-user-rights.component';
+import { AdminUserDocumentsComponent } from './components/admin-user-documents/admin-user-documents.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { AdminUserRightsComponent } from './components/admin-user-rights/admin-u
       { path: 'admin-user-details/:userId', component: AdminUserDetailsComponent, canActivate: [AuthGuard, AdminAuthGuardService] }
     ])
   ],
-  declarations: [AdminDashboardComponent, AdminUserSearchComponent, AdminUserDetailsComponent, AdminUserRightsComponent]
+  declarations: [AdminDashboardComponent, AdminUserSearchComponent, AdminUserDetailsComponent, AdminUserRightsComponent, AdminUserDocumentsComponent]
 })
 export class AdminModule { }

@@ -4,6 +4,7 @@
       <thead>
         <tr>
           <th *ngIf="isPositionApply" class="text-center">Submit Document</th>
+          <th *ngIf="isAdmin" class="text-center">Delete Document</th>
           <th>Document Name</th>
           <th>Date Uploaded</th>
         </tr>
@@ -11,6 +12,9 @@
       <tbody>
         <tr *ngFor="let document of documents">
           <td *ngIf="isPositionApply" class="text-center">
+            <input type="checkbox" (change)="onChange(document)" [checked]="isCheckboxChecked(document)">
+          </td>
+          <td *ngIf="isAdmin" class="text-center">
             <input type="checkbox" (change)="onChange(document)" [checked]="isCheckboxChecked(document)">
           </td>
           <td>
