@@ -20,7 +20,6 @@ import { ApplicantModule } from 'applicant/applicant.module';
 import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 import { PositionOwnerComponent } from './components/position-owner/position-owner.component';
 import { PositionWorkflowComponent } from './components/position-workflow/position-workflow.component';
-import { PositionStatusComponent } from './components/position-status/position-status.component';
 import { PositionValidationService } from './services/position-validation.service';
 import { PositionApplySuccessComponent } from './components/position-apply-success/position-apply-success.component';
 import { PositionNotesComponent } from './components/position-notes/position-notes.component';
@@ -62,7 +61,6 @@ import { PositionNoteComponent } from './components/position-note/position-note.
     PositionApplicantsComponent,
     PositionOwnerComponent,
     PositionWorkflowComponent,
-    PositionStatusComponent,
     PositionApplySuccessComponent,
     PositionNotesComponent,
     PositionNoteComponent
