@@ -1,6 +1,21 @@
 <div class="card">
   <div class="card-body">
     <h6>Position Status</h6>
-    <app-position-status [position]="position"></app-position-status>
+    <div class="form-row">
+      <div class="col-4">
+        <select #positionStatus="ngModel" [(ngModel)]="position.status" name="selectedPositionStatus" id="selectedPositionStatus"
+          (change)="onStatusChange()" class="form-control" required>
+          <option *ngFor="let positionStatus of positionStatuses" [value]="positionStatus">
+            {{ positionStatus }}
+          </option>
+        </select>
+        <br />
+        <textarea [(ngModel)]="noteContent" rows="3" cols="50" [placeholder]="placeHolderText" [readonly]="!canAddNote"></textarea>
+        <button [disabled]="!canAddNote" class="btn btn-primary" (click)="triggerPositionChange()">Update Position Status</button>
+      </div>
+    </div>
+    <br />
+    <h6>Position Notes</h6>
+    <app-position-notes *ngIf="position" [positionId]="position.$key"></app-position-notes>
   </div>
 </div>

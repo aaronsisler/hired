@@ -1,4 +1,4 @@
-export interface ApplicantNote{
+export interface ApplicantNote {
   $key: string;
   applicantId: string;
   note: string;

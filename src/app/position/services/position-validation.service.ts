@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-position-validation',
-  templateUrl: './position-validation.component.html',
-  styleUrls: ['./position-validation.component.css']
-})
-export class PositionValidationComponent {
+@Injectable()
+export class PositionValidationService {
   //This needs to stay in this order
   //Anything added needs to be in the correct workflow position within array
   private validStatusLevels: string[] = ["OPEN", "CANDIDATE SELECTED", "OFFER MADE", "OFFER ACCEPTED", "CLOSED (CANDIDATE)", "CLOSED (PROCESS)"];

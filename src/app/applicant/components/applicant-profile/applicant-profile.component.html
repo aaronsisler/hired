@@ -9,7 +9,11 @@
   </ngb-tab>
   <ngb-tab title="Applicant Details">
     <ng-template ngbTabContent>
-      <app-user *ngIf="applicant" [user]="applicant.user" [readonly]="true"></app-user>
+      <div class="card">
+        <div class="card-body">
+          <app-user *ngIf="applicant" [user]="applicant.user" [readonly]="true"></app-user>
+        </div>
+      </div>
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Applicant Documents">

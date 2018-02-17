@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { PositionService } from 'shared/services/position.service';
 import { Position } from 'shared/models/position';
 import { Component, OnInit, Input } from '@angular/core';
-import { PositionValidationComponent } from 'position/services/position-validation/position-validation.component';
+import { PositionValidationService } from 'position/services/position-validation.service';
 
 @Component({
   selector: 'app-position-status',
@@ -19,7 +19,7 @@ export class PositionStatusComponent implements OnInit {
   constructor(
     private positionService: PositionService,
     private router: Router,
-    private positionValidationService: PositionValidationComponent) {
+    private positionValidationService: PositionValidationService) {
 
   }
 
