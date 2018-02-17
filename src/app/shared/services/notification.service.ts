@@ -5,10 +5,12 @@ import { Notification } from 'shared/models/notification';
 
 @Injectable()
 export class NotificationService {
-  newApplicationSubLevel: string[] = ["ALL"];
-  applicantStatusUpdateSubLevel: string[] = ["ALL", "SOME"];
-  newApplicationMessage = "Application received for Position: ";
-  applicationStatusChangeMessage = "Applicant status changed for Position: ";
+  newApplicationSubLevel: string[] = ['ALL'];
+  applicantStatusUpdateSubLevel: string[] = ['ALL', 'SOME'];
+  positionStatusUpdateSubLevel: string[] = ['ALL', 'SOME', 'REQUIRED'];
+  newApplicationMessage = 'Application received for Position: ';
+  applicationStatusChangeMessage = 'Applicant status changed for Position: ';
+  positionStatusChangeMessage = 'Position status changed for Position: ';
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -31,8 +33,19 @@ export class NotificationService {
       })
   }
 
+  async sendPositionStatusChangeNotification(positionKey: string, positionId: string) {
+    let hrefLocation = '/position-data/' + positionKey;
+    let positionWatchers$ = await this.getPositionWatchers();
+    positionWatchers$.take(1)
+      .subscribe(positionWatchersList => {
+        let filteredList = this.getFilteredList(positionWatchersList, positionKey,
+          this.positionStatusUpdateSubLevel, this.positionStatusChangeMessage, hrefLocation);
+        this.createNotificationsFromFilteredList(filteredList);
+      });
+  }
+
   async sendNewApplicationNotification(positionId: string) {
-    let hrefLocation = "/position-data/" + positionId;
+    let hrefLocation = '/position-data/' + positionId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
       .subscribe(positionWatchersList => {
@@ -43,8 +56,7 @@ export class NotificationService {
   }
 
   async sendApplicationStatusChangeNotification(positionId: string, applicantId: string) {
-    let notificationMessage = "Applicant status changed for Position: ";
-    let hrefLocation = "/applicant/" + positionId + '/' + applicantId;
+    let hrefLocation = '/applicant/' + positionId + '/' + applicantId;
     let positionWatchers$ = await this.getPositionWatchers();
     positionWatchers$.take(1)
       .subscribe(positionWatchersList => {
@@ -67,16 +79,16 @@ export class NotificationService {
     return this.db.list('/position-watchers');
   }
 
-  private getFilteredList(positionWatchersList: any[], positionId: string, subLevel: string[], notificationMessage: string, hrefLocation: string) {
+  private getFilteredList(positionWatchersList, positionId: string, subLevel: string[], notificationMessage: string, hrefLocation: string) {
     let listOfPositionWatcherInfo = [];
     let dateAdded: string = new Date().toLocaleString();
 
     positionWatchersList.forEach(record => {
-      if (record[positionId] && subLevel.includes(record[positionId]["subscriptionLevel"])) {
+      if (record[positionId] && subLevel.includes(record[positionId]['subscriptionLevel'])) {
         listOfPositionWatcherInfo.push(
           {
             userId: record.$key,
-            positionId: record[positionId]["positionId"],
+            positionId: record[positionId]['positionId'],
             positionKey: positionId,
             dateAdded: dateAdded,
             notificationMessage: notificationMessage,

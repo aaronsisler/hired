@@ -1,3 +1,4 @@
+import { PositionNoteService } from 'position/services/position-note.service';
 import { PositionWatcherService } from './services/position-watcher.service';
 import { PositionService } from 'shared/services/position.service';
 import { SharedModule } from 'shared/shared.module';
@@ -19,9 +20,10 @@ import { ApplicantModule } from 'applicant/applicant.module';
 import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 import { PositionOwnerComponent } from './components/position-owner/position-owner.component';
 import { PositionWorkflowComponent } from './components/position-workflow/position-workflow.component';
-import { PositionStatusComponent } from './components/position-status/position-status.component';
-import { PositionValidationComponent } from './services/position-validation/position-validation.component';
+import { PositionValidationService } from './services/position-validation.service';
 import { PositionApplySuccessComponent } from './components/position-apply-success/position-apply-success.component';
+import { PositionNotesComponent } from './components/position-notes/position-notes.component';
+import { PositionNoteComponent } from './components/position-note/position-note.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,8 @@ import { PositionApplySuccessComponent } from './components/position-apply-succe
   providers: [
     PositionService,
     PositionWatcherService,
-    PositionValidationComponent
+    PositionValidationService,
+    PositionNoteService
   ],
   declarations: [
     PositionsComponent,
@@ -58,9 +61,9 @@ import { PositionApplySuccessComponent } from './components/position-apply-succe
     PositionApplicantsComponent,
     PositionOwnerComponent,
     PositionWorkflowComponent,
-    PositionStatusComponent,
-    PositionValidationComponent,
-    PositionApplySuccessComponent
+    PositionApplySuccessComponent,
+    PositionNotesComponent,
+    PositionNoteComponent
   ]
 })
 export class PositionModule { }

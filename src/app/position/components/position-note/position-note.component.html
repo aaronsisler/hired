@@ -1,0 +1,10 @@
+<textarea #noteContent="ngModel" [(ngModel)]="positionNote.note" rows="2" cols="100" [readonly]="readonly"></textarea>
+<a *ngIf="readonly" (click)="unlockNote()" title="Edit Note">
+  <i class="fa fa-pencil"></i>
+</a>
+<a *ngIf="!readonly" (click)="updateNote()" title="Submit Note">
+  <i class="fa fa-check"></i>
+</a>
+<p>
+  <strong>Note Added:</strong> {{positionNote.dateAdded}}
+</p>

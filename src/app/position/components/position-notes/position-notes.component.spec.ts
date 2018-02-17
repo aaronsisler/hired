@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PositionStatusComponent } from './position-status.component';
+import { PositionNotesComponent } from './position-notes.component';
 
-describe('PositionStatusComponent', () => {
-  let component: PositionStatusComponent;
-  let fixture: ComponentFixture<PositionStatusComponent>;
+describe('PositionNotesComponent', () => {
+  let component: PositionNotesComponent;
+  let fixture: ComponentFixture<PositionNotesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PositionStatusComponent ]
+      declarations: [ PositionNotesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PositionStatusComponent);
+    fixture = TestBed.createComponent(PositionNotesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

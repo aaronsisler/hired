@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PositionValidationComponent } from './position-validation.component';
+import { PositionValidationService } from './position-validation.service';
 
-describe('PositionValidationComponent', () => {
-  let component: PositionValidationComponent;
-  let fixture: ComponentFixture<PositionValidationComponent>;
+describe('PositionValidationService', () => {
+  let component: PositionValidationService;
+  let fixture: ComponentFixture<PositionValidationService>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PositionValidationComponent ]
+      declarations: [ PositionValidationService ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PositionValidationComponent);
+    fixture = TestBed.createComponent(PositionValidationService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,12 @@
+<div *ngIf="positionNotes$ | async as positionNotes">
+  <table class="table" *ngIf="positionNotes.length; else noPositionNotes">
+    <tr *ngFor="let positionNote of positionNotes">
+      <td>
+        <app-position-note [positionNote]="positionNote"></app-position-note>
+      </td>
+    </tr>
+  </table>
+  <ng-template #noPositionNotes>
+    No Position Notes found
+  </ng-template>
+</div>
