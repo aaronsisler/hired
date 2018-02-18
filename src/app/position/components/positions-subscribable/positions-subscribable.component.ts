@@ -39,7 +39,7 @@ export class PositionsSubscribableComponent implements OnInit, OnDestroy {
 
   filter(query: string) {
     this.filteredPositions = (query) ?
-      this.positions.filter(position => position.title.toLowerCase().includes(query.toLowerCase()))
+      this.positions.filter(position => position.positionId.toLowerCase().includes(query.toLowerCase()))
       : this.positions.filter(position => !this.positionsWatched.some(f => f.$key == position.$key));
   }
 

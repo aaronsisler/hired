@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <button (click)="navigateToSubscribablePositions()" class="btn btn-primary">Watch New Position</button>
+    <br />
+    <br />
+    <div *ngIf="positionsWatched">
+      <h4>Watched Positions</h4>
+      <p>
+        <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+      </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Position Id</th>
+            <th>Subscription Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let positionWatched of filteredPositionsWatched">
+            <td>
+              <a [routerLink]="['/position-data/', positionWatched.$key]">{{ positionWatched.positionId }}</a>
+            </td>
+            <td>
+              <select #subscriptionLevel="ngModel" [(ngModel)]="positionWatched.subscriptionLevel" name="subscriptionLevel" id="subscriptionLevel"
+                (change)="onSubLevelChange(positionWatched.$key, positionWatched.positionId, $event.target.value)" class="form-control"
+                required>
+                <option *ngFor="let subLevel of subscriptionLevels" [value]="subLevel">
+                  {{ subLevel }}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

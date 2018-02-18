@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PositionModule } from 'position/position.module';
+import { DashboardPositionsComponent } from './components/dashboard-positions/dashboard-positions.component';
+import { DashboardApplicationsComponent } from './components/dashboard-applications/dashboard-applications.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { PositionModule } from 'position/position.module';
       NotificationsContainerComponent,
       NavbarComponent,
       DashboardComponent,
-      LogoutComponent
+      LogoutComponent,
+      DashboardPositionsComponent,
+      DashboardApplicationsComponent
     ]
 })
 export class CoreModule { }
