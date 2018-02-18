@@ -1,7 +1,7 @@
-<ngb-tabset>
-  <ngb-tab title="Positions">
+<ngb-tabset *ngIf="user">
+  <ngb-tab title="Positions" *ngIf="user.isEmployee">
     <ng-template ngbTabContent>
-      <app-dashboard-positions *ngIf="userId" [userId]="userId"></app-dashboard-positions>
+      <app-dashboard-positions *ngIf="user" [userId]="user.$key"></app-dashboard-positions>
     </ng-template>
   </ngb-tab>
   <ngb-tab title="Applications">
