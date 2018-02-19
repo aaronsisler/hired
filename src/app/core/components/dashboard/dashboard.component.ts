@@ -12,7 +12,6 @@ import { AuthService } from 'shared/services/auth.service';
 export class DashboardComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   user: AppUser;
-  //userId: string;
 
   constructor(private authService: AuthService, private userService: UserService) { }
 
@@ -20,7 +19,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userSubscription = await this.authService.user$
       .switchMap(authUser => this.userService.get(authUser.uid))
       .subscribe(user => this.user = user);
-    //subscribe( user => this.userId = user.uid);
   }
 
   ngOnDestroy() {

@@ -1,12 +1,3 @@
-<ngb-tabset *ngIf="user">
-  <ngb-tab title="Positions" *ngIf="user.isEmployee">
-    <ng-template ngbTabContent>
-      <app-dashboard-positions *ngIf="user" [userId]="user.$key"></app-dashboard-positions>
-    </ng-template>
-  </ngb-tab>
-  <ngb-tab title="Applications">
-    <ng-template ngbTabContent>
-      <app-dashboard-applications></app-dashboard-applications>
-    </ng-template>
-  </ngb-tab>
-</ngb-tabset>
+<div *ngIf="user">
+  <app-dashboard-positions [userId]="user.$key"></app-dashboard-positions>
+</div>

@@ -17,7 +17,7 @@ export class ApplicantService {
       .update({ applicantId: result.key, displayName: user.displayName, applicationStatus: applicationStatus })
   }
 
-  async checkIfApplicationExistsForPosition(positionId: string, userId: string) {
+  checkIfApplicationExistsForPosition(positionId: string, userId: string) {
     return this.db.object('/applications/' + positionId + '/' + userId);
   }
 

@@ -1,7 +1,16 @@
 <div *ngIf="position" class="card">
   <app-position-details [position]="position"></app-position-details>
   <div class="card-footer text-muted">
-    <button [routerLink]="['/position-apply/', position.$key]" class="btn btn-primary">Apply for Position</button>
-    <button routerLink="/" class="btn btn-secondary">Back</button>
+    <div class="row">
+      <div class="col-md-6">
+        <ng-template #applicationExists>
+          <div class="alert alert-danger">
+            Position has been applied to already
+          </div>
+        </ng-template>
+        <button *ngIf="!doesApplicationExist; else applicationExists" [routerLink]="['/position-apply/', position.$key]" class="btn btn-primary">Apply for Position</button>
+        <button routerLink="/" class="btn btn-secondary">Back</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.service';
 import { AuthGuard } from 'shared/services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
@@ -11,7 +12,6 @@ import { SharedModule } from 'shared/shared.module';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PositionModule } from 'position/position.module';
 import { DashboardPositionsComponent } from './components/dashboard-positions/dashboard-positions.component';
-import { DashboardApplicationsComponent } from './components/dashboard-applications/dashboard-applications.component';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { DashboardApplicationsComponent } from './components/dashboard-applicati
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] }
     ])
   ],
   exports: [
@@ -38,7 +38,6 @@ import { DashboardApplicationsComponent } from './components/dashboard-applicati
       DashboardComponent,
       LogoutComponent,
       DashboardPositionsComponent,
-      DashboardApplicationsComponent
     ]
 })
 export class CoreModule { }
