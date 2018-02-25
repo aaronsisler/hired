@@ -16,10 +16,24 @@ import { AdminUserDocumentsComponent } from './components/admin-user-documents/a
     SharedModule,
     UserModule,
     RouterModule.forChild([
-      { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard, AdminAuthGuardService] },
-      { path: 'admin-user-details/:userId', component: AdminUserDetailsComponent, canActivate: [AuthGuard, AdminAuthGuardService] }
+      {
+        path: 'admin',
+        component: AdminDashboardComponent,
+        canActivate: [AuthGuard, AdminAuthGuardService]
+      },
+      {
+        path: 'admin-user-details/:userId',
+        component: AdminUserDetailsComponent,
+        canActivate: [AuthGuard, AdminAuthGuardService]
+      }
     ])
   ],
-  declarations: [AdminDashboardComponent, AdminUserSearchComponent, AdminUserDetailsComponent, AdminUserRightsComponent, AdminUserDocumentsComponent]
+  declarations: [
+    AdminDashboardComponent,
+    AdminUserSearchComponent,
+    AdminUserDetailsComponent,
+    AdminUserRightsComponent,
+    AdminUserDocumentsComponent
+  ]
 })
 export class AdminModule { }

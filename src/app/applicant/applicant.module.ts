@@ -19,7 +19,11 @@ import { EmployeeAuthGuardService } from 'shared/services/employee-auth-guard.se
     SharedModule,
     UserModule,
     RouterModule.forChild([
-      { path: 'applicant/:positionId/:applicantId', component: ApplicantProfileComponent, canActivate: [AuthGuard, EmployeeAuthGuardService] },
+      {
+        path: 'applicant/:positionId/:applicantId',
+        component: ApplicantProfileComponent,
+        canActivate: [AuthGuard, EmployeeAuthGuardService]
+      },
     ])
   ],
   exports: [ApplicantProfileComponent],

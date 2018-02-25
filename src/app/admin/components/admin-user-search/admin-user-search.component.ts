@@ -16,7 +16,7 @@ export class AdminUserSearchComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userSubscription = this.userService.getAll().subscribe(users => this.filteredUsers = this.users = users)
+    this.userSubscription = this.userService.getAll().subscribe(users => this.filteredUsers = this.users = users);
   }
 
   filter(query: string) {

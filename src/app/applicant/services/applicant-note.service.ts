@@ -16,9 +16,9 @@ export class ApplicantNoteService {
   }
 
   create(applicantId: string, noteContent: string) {
-    let dateConstant = new Date();
-    let applicantNote = { applicantId: applicantId, note: noteContent, dateAdded: dateConstant.toLocaleString() };
-    //Set Priority as negative getTime() since Firebase querying only does ascending currently
+    const dateConstant = new Date();
+    const applicantNote = { applicantId: applicantId, note: noteContent, dateAdded: dateConstant.toLocaleString() };
+    // Set Priority as negative getTime() since Firebase querying only does ascending currently
     return this.db.database.ref('/applicant-notes/' + applicantId)
       .push().setWithPriority(applicantNote, -(dateConstant.getTime()));
   }
